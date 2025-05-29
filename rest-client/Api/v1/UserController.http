@@ -1,0 +1,44 @@
+#Display a listing of the resource
+GET http://localhost:8000/api/v1/users
+Content-Type: application/json
+###
+
+#Display a listing by uuid.
+GET http://localhost:8000/api/v1/users/575b2d89-cf9e-4c1f-8fd1-6a0499ad4a4c
+Content-Type: application/json
+###
+
+#Display a listing page of the resource
+GET http://localhost:8000/api/v1/users/page
+Content-Type: application/json
+###
+
+#Store a newly created resource in storage.
+POST http://localhost:8000/api/v1/users
+Content-Type: application/json
+
+{
+   "name": "Paulo Dias Lucas",
+   "phone": "983298091",
+   "password": "12345678",
+   "confirmed": "12345678"
+}
+###
+
+#Update the specified resource in storage.
+PUT http://localhost:8000/api/v1/users/09d9827b-b15c-430b-94bc-fd2685aa5396
+Content-Type: application/json
+
+{
+   "name": "Paulo Dias Lucas",
+   "phone": "983298091",
+   "email": "paulodiaslucas@gmail.com",
+   "password": "12345678",
+   "confirmed": "12345678"
+}
+###
+
+#Remove the specified resource from storage.
+DELETE  http://localhost:8000/api/v1/users/09d9827b-b15c-430b-94bc-fd2685aa5396
+Content-Type: application/json
+###

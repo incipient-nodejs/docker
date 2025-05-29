@@ -1,0 +1,18 @@
+meta {
+  name: Create
+  type: http
+  seq: 4
+}
+
+post {
+  url: {{url}}/{{deleteAccess}}
+  body: json
+  auth: none
+}
+
+body:json {
+  {
+   "user_id": 2,
+   "feedback": "Hello my vida"
+  }
+}

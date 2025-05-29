@@ -1,0 +1,21 @@
+meta {
+  name: Update
+  type: http
+  seq: 5
+}
+
+put {
+  url: {{url}}/{{user}}/7d5009ce-139d-422e-9b09-0508c6911534
+  body: json
+  auth: none
+}
+
+body:json {
+  {
+     "name": "Paulo Dias Lucas",
+     "phone": "983298091",
+     "email": "paulodiaslucas@gmail.com",
+     "password": "12345678",
+     "confirmed": "12345678"
+  }
+}

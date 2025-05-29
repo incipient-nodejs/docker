@@ -1,0 +1,18 @@
+meta {
+  name: Update
+  type: http
+  seq: 8
+}
+
+put {
+  url: {{url}}/{{bannedTerms}}/48
+  body: json
+  auth: none
+}
+
+body:json {
+  {
+    "text_en": "Testee",
+    "text_pt": "Testa"
+  }
+}

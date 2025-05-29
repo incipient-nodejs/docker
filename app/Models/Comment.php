@@ -1,0 +1,20 @@
+<?php
+
+namespace App\Models;
+
+use Illuminate\Database\Eloquent\Model;
+
+class Comment extends Model
+{
+    const TABLE = "comments";
+
+    protected $table = Comment::TABLE;
+
+    protected $fillable = [
+        'id',
+        'name',
+        'phone',
+        'feedback',
+        'send_data',
+    ];
+}

@@ -1,0 +1,17 @@
+meta {
+  name: otp
+  type: http
+  seq: 1
+}
+
+post {
+  url: {{url}}/sms-opt
+  body: json
+  auth: none
+}
+
+body:json {
+  {
+    "phoneNumber": "906269780"
+  }
+}

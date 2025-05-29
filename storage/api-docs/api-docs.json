@@ -1,0 +1,4533 @@
+{
+    "openapi": "3.0.0",
+    "info": {
+        "title": "Documentation API bitkakir project",
+        "version": "1.0"
+    },
+    "paths": {
+        "/api/v1/banned-terms": {
+            "get": {
+                "tags": [
+                    "Banned Terms"
+                ],
+                "summary": "List banned-terms",
+                "description": "Display listing of the resource",
+                "operationId": "cf13f8f0f1e1c57feafd329feb0033b9",
+                "responses": {
+                    "200": {
+                        "description": "OK"
+                    }
+                }
+            },
+            "post": {
+                "tags": [
+                    "Banned Terms"
+                ],
+                "summary": "Save banned terms",
+                "description": "Creates and returns a new banned terms",
+                "operationId": "61a2ffc0e14729b48154a03118409ac4",
+                "requestBody": {
+                    "$ref": "#/components/requestBodies/BannedTermRequest"
+                },
+                "responses": {
+                    "201": {
+                        "description": "Category created successfully"
+                    },
+                    "400": {
+                        "description": "Invalid data"
+                    }
+                }
+            }
+        },
+        "/api/v1/banners": {
+            "get": {
+                "tags": [
+                    "Banners"
+                ],
+                "summary": "List banners",
+                "description": "Display listing of the resource",
+                "operationId": "30a51bd353301beff317daae060927ed",
+                "responses": {
+                    "200": {
+                        "description": "OK"
+                    }
+                }
+            },
+            "post": {
+                "tags": [
+                    "Banners"
+                ],
+                "summary": "Save banner",
+                "description": "Creates and returns a new banner",
+                "operationId": "54d0e0fad064fa6775846f849e93e639",
+                "requestBody": {
+                    "$ref": "#/components/requestBodies/BannerRequest"
+                },
+                "responses": {
+                    "201": {
+                        "description": "Category created successfully"
+                    },
+                    "400": {
+                        "description": "Invalid data"
+                    }
+                }
+            }
+        },
+        "/api/v1/business-details": {
+            "get": {
+                "tags": [
+                    "Business Details"
+                ],
+                "summary": "List business details",
+                "description": "Display listing of the resource",
+                "operationId": "80aa383d2eee96028ce9b6decb1aece1",
+                "responses": {
+                    "200": {
+                        "description": "OK"
+                    }
+                }
+            },
+            "post": {
+                "tags": [
+                    "Business Details"
+                ],
+                "summary": "Create business detail",
+                "description": "Creates and returns a new business detail",
+                "operationId": "8bb381960b4352856e1299c765f27c34",
+                "requestBody": {
+                    "$ref": "#/components/requestBodies/BusinessDetailRequest"
+                },
+                "responses": {
+                    "201": {
+                        "description": "Business detail created successfully"
+                    },
+                    "400": {
+                        "description": "Invalid data"
+                    }
+                }
+            }
+        },
+        "/api/v1/categories": {
+            "get": {
+                "tags": [
+                    "Categories"
+                ],
+                "summary": "List categories",
+                "description": "Display listing of the resource",
+                "operationId": "a0c0b4b79a99c3dc4c3b935daebccf7f",
+                "responses": {
+                    "200": {
+                        "description": "OK"
+                    }
+                }
+            },
+            "post": {
+                "tags": [
+                    "Categories"
+                ],
+                "summary": "Save service",
+                "description": "Creates and returns a new category",
+                "operationId": "c715126689abb74d0f7540c02da3b899",
+                "requestBody": {
+                    "$ref": "#/components/requestBodies/CategoryRequest"
+                },
+                "responses": {
+                    "201": {
+                        "description": "Category created successfully"
+                    },
+                    "400": {
+                        "description": "Invalid data"
+                    }
+                }
+            }
+        },
+        "/api/v1/comments": {
+            "get": {
+                "tags": [
+                    "Comments"
+                ],
+                "summary": "List comments",
+                "description": "Display listing of the resource",
+                "operationId": "410c5a0a6613f857a5a780eaf3ef99b7",
+                "responses": {
+                    "200": {
+                        "description": "OK"
+                    }
+                }
+            },
+            "post": {
+                "tags": [
+                    "Comments"
+                ],
+                "summary": "Save service",
+                "description": "Creates and returns a new category",
+                "operationId": "917b06c80f173dc9400c056742570b45",
+                "requestBody": {
+                    "$ref": "#/components/requestBodies/CommentRequest"
+                },
+                "responses": {
+                    "201": {
+                        "description": "Category created successfully"
+                    },
+                    "400": {
+                        "description": "Invalid data"
+                    }
+                }
+            }
+        },
+        "/api/v1/company-data": {
+            "get": {
+                "tags": [
+                    "Company data"
+                ],
+                "summary": "List company data",
+                "description": "Display listing of the resource",
+                "operationId": "092e5b116d10a0a29b72ca126ff56e83",
+                "responses": {
+                    "200": {
+                        "description": "OK"
+                    }
+                }
+            },
+            "post": {
+                "tags": [
+                    "Company data"
+                ],
+                "summary": "Save company data",
+                "description": "Creates and returns a new company data",
+                "operationId": "a48076b48315b73daf7d4ded19751698",
+                "requestBody": {
+                    "$ref": "#/components/requestBodies/CompanyDataRequest"
+                },
+                "responses": {
+                    "201": {
+                        "description": "Product created successfully"
+                    },
+                    "400": {
+                        "description": "Invalid data"
+                    }
+                }
+            }
+        },
+        "/api/v1/delete-accounts": {
+            "get": {
+                "tags": [
+                    "Delete accounts"
+                ],
+                "summary": "List delete-accounts",
+                "description": "Display listing of the resource",
+                "operationId": "9c6c2a1c5f5e47f0b3754d306cf3e128",
+                "responses": {
+                    "200": {
+                        "description": "OK"
+                    }
+                }
+            },
+            "post": {
+                "tags": [
+                    "Delete accounts"
+                ],
+                "summary": "Save accout delete",
+                "description": "Creates and returns a new account removed",
+                "operationId": "44a6cf18930d67f1cd4a1b8230636125",
+                "requestBody": {
+                    "$ref": "#/components/requestBodies/DeleteAccountRequest"
+                },
+                "responses": {
+                    "201": {
+                        "description": "Category created successfully"
+                    },
+                    "400": {
+                        "description": "Invalid data"
+                    }
+                }
+            }
+        },
+        "/api/v1/favorites": {},
+        "/api/v1/formal-types": {
+            "get": {
+                "tags": [
+                    "Formal Type"
+                ],
+                "summary": "List formal-types",
+                "description": "Display listing of the resource",
+                "operationId": "ce0c4a6cdfbdddcee51b296646597f1c",
+                "responses": {
+                    "200": {
+                        "description": "OK"
+                    }
+                }
+            },
+            "post": {
+                "tags": [
+                    "Formal Type"
+                ],
+                "summary": "Save account formal type",
+                "description": "Creates and returns a new account formal type",
+                "operationId": "68401d386e6900ce7d03a3fad2ca236f",
+                "requestBody": {
+                    "$ref": "#/components/requestBodies/FormalTypeRequest"
+                },
+                "responses": {
+                    "201": {
+                        "description": "Category created successfully"
+                    },
+                    "400": {
+                        "description": "Invalid data"
+                    }
+                }
+            }
+        },
+        "/api/v1/grid-settings": {
+            "get": {
+                "tags": [
+                    "Grid settings"
+                ],
+                "summary": "List grid settings",
+                "description": "Display listing of the resource",
+                "operationId": "c3f9df71df1b70b6e52661f26c3c530f",
+                "responses": {
+                    "200": {
+                        "description": "OK"
+                    }
+                }
+            },
+            "post": {
+                "tags": [
+                    "Grid settings"
+                ],
+                "summary": "Save account grid settings",
+                "description": "Creates and returns a new grid settings",
+                "operationId": "f16f3b9f7183cd8fa5cc851f84783a32",
+                "requestBody": {
+                    "$ref": "#/components/requestBodies/GridSettingsRequest"
+                },
+                "responses": {
+                    "201": {
+                        "description": "Category created successfully"
+                    },
+                    "400": {
+                        "description": "Invalid data"
+                    }
+                }
+            }
+        },
+        "/api/v1/informal-types": {
+            "get": {
+                "tags": [
+                    "Informal Type"
+                ],
+                "summary": "List informal-types",
+                "description": "Display listing of the resource",
+                "operationId": "ba0704dc9806e3e2231184dc8ece673c",
+                "responses": {
+                    "200": {
+                        "description": "OK"
+                    }
+                }
+            },
+            "post": {
+                "tags": [
+                    "Informal Type"
+                ],
+                "summary": "Save account informal Type",
+                "description": "Creates and returns a new account informal Type",
+                "operationId": "9d6f74712d7ee938f46d446292a72478",
+                "requestBody": {
+                    "$ref": "#/components/requestBodies/InformalTypeRequest"
+                },
+                "responses": {
+                    "201": {
+                        "description": "Category created successfully"
+                    },
+                    "400": {
+                        "description": "Invalid data"
+                    }
+                }
+            }
+        },
+        "/api/v1/integration-root": {
+            "post": {
+                "tags": [
+                    "Integration root"
+                ],
+                "summary": "Save integration",
+                "description": "Integration with api of root",
+                "operationId": "13b1d0a2841dfbda04e365ebf39e75b2",
+                "requestBody": {
+                    "description": "Product creation payload",
+                    "required": true,
+                    "content": {
+                        "application/json": {
+                            "schema": {
+                                "required": [
+                                    "url",
+                                    "user_id",
+                                    "name",
+                                    "price",
+                                    "description"
+                                ],
+                                "properties": {
+                                    "url": {
+                                        "description": "Valid product URL",
+                                        "type": "string",
+                                        "format": "url",
+                                        "example": "https://example.com/product/123"
+                                    },
+                                    "user_id": {
+                                        "description": "ID of the user creating the product",
+                                        "type": "integer",
+                                        "example": 1
+                                    },
+                                    "name": {
+                                        "description": "Name of the product",
+                                        "type": "string",
+                                        "example": "Bluetooth Speaker"
+                                    },
+                                    "price": {
+                                        "description": "Price of the product",
+                                        "type": "string",
+                                        "example": "49.99"
+                                    },
+                                    "supplier": {
+                                        "description": "Optional supplier name",
+                                        "type": "string",
+                                        "example": "BestSupplier Inc.",
+                                        "nullable": true
+                                    },
+                                    "promotion": {
+                                        "description": "Optional promotion details",
+                                        "type": "string",
+                                        "example": "10% off until May",
+                                        "nullable": true
+                                    },
+                                    "delivery": {
+                                        "description": "Optional delivery information",
+                                        "type": "string",
+                                        "example": "Free delivery within 3 days",
+                                        "nullable": true
+                                    },
+                                    "address": {
+                                        "description": "Optional address for delivery or pickup",
+                                        "type": "string",
+                                        "example": "123 Market Street, Springfield",
+                                        "nullable": true
+                                    },
+                                    "description": {
+                                        "description": "Product description",
+                                        "type": "string",
+                                        "example": "High-quality Bluetooth speaker with 12-hour battery life."
+                                    }
+                                },
+                                "type": "object"
+                            }
+                        }
+                    }
+                },
+                "responses": {
+                    "201": {
+                        "description": "Category created successfully"
+                    },
+                    "400": {
+                        "description": "Invalid data"
+                    }
+                }
+            }
+        },
+        "/api/v1/integration-shopify": {
+            "post": {
+                "tags": [
+                    "Integration shopify"
+                ],
+                "summary": "Save integration",
+                "description": "Integration with api of Shopify",
+                "operationId": "dc7e86e381f111d066b64138778b3c7e",
+                "requestBody": {
+                    "description": "URL registration payload",
+                    "required": true,
+                    "content": {
+                        "application/json": {
+                            "schema": {
+                                "required": [
+                                    "url",
+                                    "user_id"
+                                ],
+                                "properties": {
+                                    "url": {
+                                        "description": "A valid URL",
+                                        "type": "string",
+                                        "format": "url",
+                                        "example": "https://example.com"
+                                    },
+                                    "user_id": {
+                                        "description": "ID of the user making the request",
+                                        "type": "integer",
+                                        "example": 1
+                                    }
+                                },
+                                "type": "object"
+                            }
+                        }
+                    }
+                },
+                "responses": {
+                    "201": {
+                        "description": "Category created successfully"
+                    },
+                    "400": {
+                        "description": "Invalid data"
+                    }
+                }
+            }
+        },
+        "/api/v1/integration-wordpress": {
+            "post": {
+                "tags": [
+                    "Integration wordpress"
+                ],
+                "summary": "Save integration",
+                "description": "Integration with api of Wordpress",
+                "operationId": "db3b033ec58fb4d98f25295097708fca",
+                "requestBody": {
+                    "description": "URL registration payload",
+                    "required": true,
+                    "content": {
+                        "application/json": {
+                            "schema": {
+                                "required": [
+                                    "url",
+                                    "user_id"
+                                ],
+                                "properties": {
+                                    "url": {
+                                        "description": "A valid URL",
+                                        "type": "string",
+                                        "format": "url",
+                                        "example": "https://example.com"
+                                    },
+                                    "user_id": {
+                                        "description": "ID of the user making the request",
+                                        "type": "integer",
+                                        "example": 1
+                                    }
+                                },
+                                "type": "object"
+                            }
+                        }
+                    }
+                },
+                "responses": {
+                    "201": {
+                        "description": "Category created successfully"
+                    },
+                    "400": {
+                        "description": "Invalid data"
+                    }
+                }
+            }
+        },
+        "/api/v1/login": {
+            "post": {
+                "tags": [
+                    "Authentication"
+                ],
+                "summary": "Realization authentication",
+                "description": "Realization authentication, inform username, password",
+                "operationId": "af0aad3b94ce757f95998badc8baa9b5",
+                "requestBody": {
+                    "description": "Operation authentication",
+                    "required": true,
+                    "content": {
+                        "application/json": {
+                            "schema": {
+                                "required": [
+                                    "username",
+                                    "passowrd"
+                                ],
+                                "properties": {
+                                    "username": {
+                                        "description": "Username is phone number or email",
+                                        "type": "string"
+                                    },
+                                    "password": {
+                                        "description": "Inform you password",
+                                        "type": "string"
+                                    }
+                                },
+                                "type": "object"
+                            }
+                        }
+                    }
+                },
+                "responses": {
+                    "200": {
+                        "description": "Login successful"
+                    }
+                }
+            }
+        },
+        "/api/v1/personal-data": {
+            "get": {
+                "tags": [
+                    "Personal data"
+                ],
+                "summary": "List personal data",
+                "description": "Display listing of the resource",
+                "operationId": "51ced13c1d6edbef90de35b92b80c503",
+                "responses": {
+                    "200": {
+                        "description": "OK"
+                    }
+                }
+            },
+            "post": {
+                "tags": [
+                    "Personal data"
+                ],
+                "summary": "Save personal data",
+                "description": "Creates and returns a new personal data",
+                "operationId": "4b24688b2362268ca31ab60c7c8dc7f1",
+                "requestBody": {
+                    "$ref": "#/components/requestBodies/PersonalDataRequest"
+                },
+                "responses": {
+                    "201": {
+                        "description": "Product created successfully"
+                    },
+                    "400": {
+                        "description": "Invalid data"
+                    }
+                }
+            }
+        },
+        "/api/v1/products": {
+            "get": {
+                "tags": [
+                    "Products"
+                ],
+                "summary": "List products",
+                "description": "Display listing of the resource",
+                "operationId": "58c1a6ac0aaf000641c821b802252026",
+                "responses": {
+                    "200": {
+                        "description": "OK"
+                    }
+                }
+            },
+            "post": {
+                "tags": [
+                    "Products"
+                ],
+                "summary": "Save product",
+                "description": "Creates and returns a new product",
+                "operationId": "0ec0d87f9b641174df0f28100f3b760d",
+                "requestBody": {
+                    "$ref": "#/components/requestBodies/ProductRequest"
+                },
+                "responses": {
+                    "201": {
+                        "description": "Product created successfully"
+                    },
+                    "400": {
+                        "description": "Invalid data"
+                    }
+                }
+            }
+        },
+        "/api/v1/product-service/find-by-user": {},
+        "/api/v1/rating-products": {
+            "get": {
+                "tags": [
+                    "Rating products"
+                ],
+                "summary": "List rating products",
+                "description": "Display listing of the resource",
+                "operationId": "1d29b3b07f944380ec6acc7041c63318",
+                "responses": {
+                    "200": {
+                        "description": "OK"
+                    }
+                }
+            },
+            "post": {
+                "tags": [
+                    "Rating products"
+                ],
+                "summary": "Save rating of products",
+                "description": "Creates and returns a new rating products",
+                "operationId": "610191ce246fd52e43dafabb090627e2",
+                "requestBody": {
+                    "$ref": "#/components/requestBodies/RatingProductRequest"
+                },
+                "responses": {
+                    "201": {
+                        "description": "Category created successfully"
+                    },
+                    "400": {
+                        "description": "Invalid data"
+                    }
+                }
+            }
+        },
+        "/api/v1/rating-services": {
+            "get": {
+                "tags": [
+                    "Rating services"
+                ],
+                "summary": "List rating services",
+                "description": "Display listing of the resource",
+                "operationId": "a702ab4046310e0420c464e997f2d917",
+                "responses": {
+                    "200": {
+                        "description": "OK"
+                    }
+                }
+            },
+            "post": {
+                "tags": [
+                    "Rating services"
+                ],
+                "summary": "Save rating of services",
+                "description": "Creates and returns a new rating services",
+                "operationId": "bb276a5b6d18d1cfd01d52ca57612e71",
+                "requestBody": {
+                    "$ref": "#/components/requestBodies/RatingProductRequest"
+                },
+                "responses": {
+                    "201": {
+                        "description": "Category created successfully"
+                    },
+                    "400": {
+                        "description": "Invalid data"
+                    }
+                }
+            }
+        },
+        "/api/v1/users/forget-recover-password": {
+            "post": {
+                "tags": [
+                    "Forget Password"
+                ],
+                "summary": "Recoved Password",
+                "description": "Realization recoved password, inform you phone number, password and confirm password",
+                "operationId": "b6d4d51bec9285c6fa4378631da1c390",
+                "requestBody": {
+                    "description": "Realization recoved password",
+                    "required": true,
+                    "content": {
+                        "application/json": {
+                            "schema": {
+                                "required": [
+                                    "phoneNumber",
+                                    "passowrd",
+                                    "confirm"
+                                ],
+                                "properties": {
+                                    "phoneNumber": {
+                                        "description": "You phone number",
+                                        "type": "string"
+                                    },
+                                    "password": {
+                                        "description": "Inform you password",
+                                        "type": "string"
+                                    },
+                                    "confirm": {
+                                        "description": "Confirm you password",
+                                        "type": "string"
+                                    }
+                                },
+                                "type": "object"
+                            }
+                        }
+                    }
+                },
+                "responses": {
+                    "200": {
+                        "description": "Forget password successful"
+                    }
+                }
+            }
+        },
+        "/api/v1/register": {
+            "post": {
+                "tags": [
+                    "Register"
+                ],
+                "summary": "Realization register",
+                "description": "Realization register, inform name, password",
+                "operationId": "75b790aca61a4b2365ee60972ff0150d",
+                "requestBody": {
+                    "description": "Operation register",
+                    "required": true,
+                    "content": {
+                        "application/json": {
+                            "schema": {
+                                "required": [
+                                    "name",
+                                    "phone",
+                                    "password",
+                                    "confirmed"
+                                ],
+                                "properties": {
+                                    "name": {
+                                        "description": "You name",
+                                        "type": "string"
+                                    },
+                                    "phone": {
+                                        "description": "Your phone number",
+                                        "type": "string"
+                                    },
+                                    "password": {
+                                        "description": "Inform you password",
+                                        "type": "string"
+                                    },
+                                    "confirm": {
+                                        "description": "Confirm you password",
+                                        "type": "string"
+                                    }
+                                },
+                                "type": "object"
+                            }
+                        }
+                    }
+                },
+                "responses": {
+                    "200": {
+                        "description": "Login successful"
+                    }
+                }
+            }
+        },
+        "/api/v1/search": {},
+        "/api/v1/services": {
+            "get": {
+                "tags": [
+                    "Services"
+                ],
+                "summary": "List services",
+                "description": "Display listing of the resource",
+                "operationId": "96090210f627f0044246842965629abe",
+                "responses": {
+                    "200": {
+                        "description": "OK"
+                    }
+                }
+            },
+            "post": {
+                "tags": [
+                    "Services"
+                ],
+                "summary": "Save service",
+                "description": "Creates and returns a new service",
+                "operationId": "8ce07b20310ed1bf993429f8cbbe1c65",
+                "requestBody": {
+                    "$ref": "#/components/requestBodies/ServiceRequest"
+                },
+                "responses": {
+                    "201": {
+                        "description": "Service created successfully"
+                    },
+                    "400": {
+                        "description": "Invalid data"
+                    }
+                }
+            }
+        },
+        "/api/v1/sms": {},
+        "/api/v1/users": {
+            "get": {
+                "tags": [
+                    "Users"
+                ],
+                "summary": "List users",
+                "description": "Display listing of the resource",
+                "operationId": "19910912bb7d430ea79e4a646d008ec7",
+                "responses": {
+                    "200": {
+                        "description": "OK"
+                    }
+                }
+            },
+            "post": {
+                "tags": [
+                    "Users"
+                ],
+                "summary": "Save user",
+                "description": "Creates and returns a new user",
+                "operationId": "615942e9ed2368d55f68ee184c53119e",
+                "requestBody": {
+                    "$ref": "#/components/requestBodies/UserRequest"
+                },
+                "responses": {
+                    "201": {
+                        "description": "User created successfully"
+                    },
+                    "400": {
+                        "description": "Invalid data"
+                    }
+                }
+            }
+        },
+        "/api/v1/user-types": {
+            "get": {
+                "tags": [
+                    "User types"
+                ],
+                "summary": "List user types",
+                "description": "Display listing of the resource",
+                "operationId": "e2036f3d141606ea6cdf2a6f3e0f2ca4",
+                "responses": {
+                    "200": {
+                        "description": "OK"
+                    }
+                }
+            },
+            "post": {
+                "tags": [
+                    "User types"
+                ],
+                "summary": "Save user type",
+                "description": "Creates and returns a new  user type",
+                "operationId": "1f6826f669f2a3421bc2ca0d7ce0979d",
+                "requestBody": {
+                    "$ref": "#/components/requestBodies/ServiceRequest"
+                },
+                "responses": {
+                    "201": {
+                        "description": "Service created successfully"
+                    },
+                    "400": {
+                        "description": "Invalid data"
+                    }
+                }
+            }
+        },
+        "/api/v1/websites": {
+            "get": {
+                "tags": [
+                    "Websites"
+                ],
+                "summary": "List websites",
+                "description": "Display listing of the resource",
+                "operationId": "8cd58295226f0940c90c412915aec693",
+                "responses": {
+                    "200": {
+                        "description": "OK"
+                    }
+                }
+            },
+            "post": {
+                "tags": [
+                    "Websites"
+                ],
+                "summary": "Save website",
+                "description": "Creates and returns a new  website",
+                "operationId": "30a999e38c30d8e9a573e7a33d319af9",
+                "requestBody": {
+                    "$ref": "#/components/requestBodies/WebsiteRequest"
+                },
+                "responses": {
+                    "201": {
+                        "description": "Service created successfully"
+                    },
+                    "400": {
+                        "description": "Invalid data"
+                    }
+                }
+            }
+        },
+        "/api/v1/banned-terms/{id}": {
+            "get": {
+                "tags": [
+                    "Banned Terms"
+                ],
+                "summary": "Show banned terms by ID",
+                "description": "Display a listing by ID",
+                "operationId": "d37bb96a17c786524013a99ecb3cd7c8",
+                "parameters": [
+                    {
+                        "name": "id",
+                        "in": "path",
+                        "description": "Search by ID",
+                        "required": true,
+                        "schema": {
+                            "type": "string"
+                        }
+                    }
+                ],
+                "responses": {
+                    "200": {
+                        "description": "OK"
+                    },
+                    "404": {
+                        "description": "Not found"
+                    }
+                }
+            },
+            "put": {
+                "tags": [
+                    "Banned Terms"
+                ],
+                "summary": "Update banned terms",
+                "description": "Update the specified resource in storage",
+                "operationId": "7af1878969a369f6cf655ed849324afc",
+                "parameters": [
+                    {
+                        "name": "id",
+                        "in": "path",
+                        "description": "Search by ID",
+                        "required": true,
+                        "schema": {
+                            "type": "string"
+                        }
+                    }
+                ],
+                "requestBody": {
+                    "$ref": "#/components/requestBodies/BannedTermRequest"
+                },
+                "responses": {
+                    "201": {
+                        "description": "Category updated successfully"
+                    },
+                    "400": {
+                        "description": "Invalid data"
+                    }
+                }
+            },
+            "delete": {
+                "tags": [
+                    "Banned Terms"
+                ],
+                "summary": "Remove the specified resource from storage",
+                "description": "Delete banned terms",
+                "operationId": "13511b8cd925398ec33b1e9df4bd106e",
+                "parameters": [
+                    {
+                        "name": "id",
+                        "in": "path",
+                        "description": "Delete by ID",
+                        "required": true,
+                        "schema": {
+                            "type": "string"
+                        }
+                    }
+                ],
+                "responses": {
+                    "200": {
+                        "description": "OK"
+                    },
+                    "404": {
+                        "description": "Not found"
+                    }
+                }
+            }
+        },
+        "/api/v1/banned-terms/page": {
+            "get": {
+                "tags": [
+                    "Banned Terms"
+                ],
+                "summary": "List banned-terms pageable",
+                "description": "Banned Terms a listing pageable of the resource",
+                "operationId": "07e96dcada605418e49eb664f57fd8d9",
+                "responses": {
+                    "200": {
+                        "description": "OK"
+                    }
+                }
+            }
+        },
+        "/api/v1/banners/{id}": {
+            "get": {
+                "tags": [
+                    "Banners"
+                ],
+                "summary": "Show banner by UUID or ID",
+                "description": "Display a listing by UUID or ID",
+                "operationId": "f8c45f7a11b40d106951adac775f9f74",
+                "parameters": [
+                    {
+                        "name": "id",
+                        "in": "path",
+                        "description": "Search by UUID or ID",
+                        "required": true,
+                        "schema": {
+                            "type": "string"
+                        }
+                    }
+                ],
+                "responses": {
+                    "200": {
+                        "description": "OK"
+                    },
+                    "404": {
+                        "description": "Not found"
+                    }
+                }
+            },
+            "put": {
+                "tags": [
+                    "Banners"
+                ],
+                "summary": "Update banner",
+                "description": "Update the specified resource in storage",
+                "operationId": "b0f235f4aef099e679ddb388c4c74bff",
+                "parameters": [
+                    {
+                        "name": "id",
+                        "in": "path",
+                        "description": "Search by UUID or ID",
+                        "required": true,
+                        "schema": {
+                            "type": "string"
+                        }
+                    }
+                ],
+                "requestBody": {
+                    "$ref": "#/components/requestBodies/BannerRequest"
+                },
+                "responses": {
+                    "201": {
+                        "description": "Category updated successfully"
+                    },
+                    "400": {
+                        "description": "Invalid data"
+                    }
+                }
+            },
+            "delete": {
+                "tags": [
+                    "Banners"
+                ],
+                "summary": "Remove the specified resource from storage",
+                "description": "Delete banner",
+                "operationId": "d2e88a0b1651489e5c7c5b090b1ab9ad",
+                "parameters": [
+                    {
+                        "name": "id",
+                        "in": "path",
+                        "description": "Delete by UUID or ID",
+                        "required": true,
+                        "schema": {
+                            "type": "string"
+                        }
+                    }
+                ],
+                "responses": {
+                    "200": {
+                        "description": "OK"
+                    },
+                    "404": {
+                        "description": "Not found"
+                    }
+                }
+            }
+        },
+        "/api/v1/banners/page": {
+            "get": {
+                "tags": [
+                    "Banners"
+                ],
+                "summary": "List banners pageable",
+                "description": "Banners a listing pageable of the resource",
+                "operationId": "900d04abffbb16d6e148435684126e48",
+                "responses": {
+                    "200": {
+                        "description": "OK"
+                    }
+                }
+            }
+        },
+        "/api/v1/banners/find-by-screen/{screen}": {
+            "get": {
+                "tags": [
+                    "Banners"
+                ],
+                "summary": "Search banner by screen (tudo, servicos, produtos)",
+                "description": "Display a listing banners",
+                "operationId": "48ec4d4130b79530f23e20664b71031c",
+                "parameters": [
+                    {
+                        "name": "screen",
+                        "in": "path",
+                        "description": "Screen (tudo, servicos, produtos)",
+                        "required": true,
+                        "schema": {
+                            "type": "string"
+                        }
+                    }
+                ],
+                "responses": {
+                    "200": {
+                        "description": "OK"
+                    }
+                }
+            }
+        },
+        "/api/v1/banners/find-by-screen-vertical/{screen}": {
+            "get": {
+                "tags": [
+                    "Banners"
+                ],
+                "summary": "Search banner with type is vertical and screen (tudo, servicos, produtos)",
+                "description": "Display a listing banners",
+                "operationId": "50f9d92737d1fc8f1889b7e890b4abf7",
+                "parameters": [
+                    {
+                        "name": "screen",
+                        "in": "path",
+                        "description": "Screen (tudo, servicos, produtos)",
+                        "required": true,
+                        "schema": {
+                            "type": "string"
+                        }
+                    }
+                ],
+                "responses": {
+                    "200": {
+                        "description": "OK"
+                    }
+                }
+            }
+        },
+        "/api/v1/banners/find-by-screen-all-produtos": {
+            "get": {
+                "tags": [
+                    "Banners"
+                ],
+                "summary": "Display banners of products",
+                "description": "Display a banners",
+                "operationId": "25c10805072549c612829c1a44f8dca7",
+                "responses": {
+                    "200": {
+                        "description": "OK"
+                    }
+                }
+            }
+        },
+        "/api/v1/business-details/{id}": {
+            "get": {
+                "tags": [
+                    "Business Details"
+                ],
+                "summary": "Show business detail by ID",
+                "description": "Display a listing by ID",
+                "operationId": "e788c4cd7c31d79b79b87cc6107c93d7",
+                "parameters": [
+                    {
+                        "name": "id",
+                        "in": "path",
+                        "description": "Search by ID",
+                        "required": true,
+                        "schema": {
+                            "type": "string"
+                        }
+                    }
+                ],
+                "responses": {
+                    "200": {
+                        "description": "OK"
+                    },
+                    "404": {
+                        "description": "Not found"
+                    }
+                }
+            },
+            "put": {
+                "tags": [
+                    "Business Details"
+                ],
+                "summary": "Update business detail",
+                "description": "Update the specified business detail",
+                "operationId": "22b56365fe2e96376bd23f835cb0aeeb",
+                "parameters": [
+                    {
+                        "name": "id",
+                        "in": "path",
+                        "description": "Search by ID",
+                        "required": true,
+                        "schema": {
+                            "type": "string"
+                        }
+                    }
+                ],
+                "requestBody": {
+                    "$ref": "#/components/requestBodies/BusinessDetailRequest"
+                },
+                "responses": {
+                    "201": {
+                        "description": "Business detail updated successfully"
+                    },
+                    "400": {
+                        "description": "Invalid data"
+                    }
+                }
+            },
+            "delete": {
+                "tags": [
+                    "Business Details"
+                ],
+                "summary": "Delete business detail",
+                "description": "Remove the specified business detail",
+                "operationId": "64803f1fa7cdbde4e0c16a4a851c671f",
+                "parameters": [
+                    {
+                        "name": "id",
+                        "in": "path",
+                        "description": "Delete by ID",
+                        "required": true,
+                        "schema": {
+                            "type": "string"
+                        }
+                    }
+                ],
+                "responses": {
+                    "200": {
+                        "description": "Deleted"
+                    },
+                    "404": {
+                        "description": "Not found"
+                    }
+                }
+            }
+        },
+        "/api/v1/business-details/page": {
+            "get": {
+                "tags": [
+                    "Business Details"
+                ],
+                "summary": "List business details pageable",
+                "description": "Business details listing pageable",
+                "operationId": "177bedcb12335ddb9929b50866287338",
+                "responses": {
+                    "200": {
+                        "description": "OK"
+                    }
+                }
+            }
+        },
+        "/api/v1/categories/{id}": {
+            "get": {
+                "tags": [
+                    "Categories"
+                ],
+                "summary": "Show category by UUID or ID",
+                "description": "Display a listing by UUID or ID",
+                "operationId": "976b153ebe6b9f78ce96c7387b6b6d39",
+                "parameters": [
+                    {
+                        "name": "id",
+                        "in": "path",
+                        "description": "Search by UUID or ID",
+                        "required": true,
+                        "schema": {
+                            "type": "string"
+                        }
+                    }
+                ],
+                "responses": {
+                    "200": {
+                        "description": "OK"
+                    },
+                    "404": {
+                        "description": "Not found"
+                    }
+                }
+            },
+            "put": {
+                "tags": [
+                    "Categories"
+                ],
+                "summary": "Update category",
+                "description": "Update the specified resource in storage",
+                "operationId": "5e2b345bc4d173c9ece46926b92edb65",
+                "parameters": [
+                    {
+                        "name": "id",
+                        "in": "path",
+                        "description": "Search by UUID or ID",
+                        "required": true,
+                        "schema": {
+                            "type": "string"
+                        }
+                    }
+                ],
+                "requestBody": {
+                    "$ref": "#/components/requestBodies/CategoryRequest"
+                },
+                "responses": {
+                    "201": {
+                        "description": "Category updated successfully"
+                    },
+                    "400": {
+                        "description": "Invalid data"
+                    }
+                }
+            },
+            "delete": {
+                "tags": [
+                    "Categories"
+                ],
+                "summary": "Remove the specified resource from storage",
+                "description": "Delete category",
+                "operationId": "dfd094fc84e8cde02cc5ac11352ce981",
+                "parameters": [
+                    {
+                        "name": "id",
+                        "in": "path",
+                        "description": "Delete by UUID or ID",
+                        "required": true,
+                        "schema": {
+                            "type": "string"
+                        }
+                    }
+                ],
+                "responses": {
+                    "200": {
+                        "description": "OK"
+                    },
+                    "404": {
+                        "description": "Not found"
+                    }
+                }
+            }
+        },
+        "/api/v1/categories/products": {
+            "get": {
+                "tags": [
+                    "Categories"
+                ],
+                "summary": "List categories of products",
+                "description": "Display listing of the resource",
+                "operationId": "654c76514c12ee31e529b44b66ae7ba2",
+                "responses": {
+                    "200": {
+                        "description": "OK"
+                    }
+                }
+            }
+        },
+        "/api/v1/categories/services": {
+            "get": {
+                "tags": [
+                    "Categories"
+                ],
+                "summary": "List categories of service",
+                "description": "Display listing of the resource",
+                "operationId": "f0e676aede74366686b6a4519a6f10c7",
+                "responses": {
+                    "200": {
+                        "description": "OK"
+                    }
+                }
+            }
+        },
+        "/api/v1/categories/suppliers": {
+            "get": {
+                "tags": [
+                    "Categories"
+                ],
+                "summary": "List categories of suppliers",
+                "description": "Display listing of the resource",
+                "operationId": "4de6226f9b6095a8633a6666afcdb2e2",
+                "responses": {
+                    "200": {
+                        "description": "OK"
+                    }
+                }
+            }
+        },
+        "/api/v1/categories/page": {
+            "get": {
+                "tags": [
+                    "Categories"
+                ],
+                "summary": "List categories pageable",
+                "description": "Categories a listing pageable of the resource",
+                "operationId": "45b5956334e14cabe146270702a2e2ac",
+                "responses": {
+                    "200": {
+                        "description": "OK"
+                    }
+                }
+            }
+        },
+        "/api/v1/comments/{id}": {
+            "get": {
+                "tags": [
+                    "Comments"
+                ],
+                "summary": "Show category by UUID or ID",
+                "description": "Display a listing by UUID or ID",
+                "operationId": "bc715b52d5272f6c71ab8ca24f983eb7",
+                "parameters": [
+                    {
+                        "name": "id",
+                        "in": "path",
+                        "description": "Search by UUID or ID",
+                        "required": true,
+                        "schema": {
+                            "type": "string"
+                        }
+                    }
+                ],
+                "responses": {
+                    "200": {
+                        "description": "OK"
+                    },
+                    "404": {
+                        "description": "Not found"
+                    }
+                }
+            },
+            "put": {
+                "tags": [
+                    "Comments"
+                ],
+                "summary": "Update category",
+                "description": "Update the specified resource in storage",
+                "operationId": "831bc3a0c382511b8fd5878c5075b883",
+                "parameters": [
+                    {
+                        "name": "id",
+                        "in": "path",
+                        "description": "Search by UUID or ID",
+                        "required": true,
+                        "schema": {
+                            "type": "string"
+                        }
+                    }
+                ],
+                "requestBody": {
+                    "$ref": "#/components/requestBodies/CommentRequest"
+                },
+                "responses": {
+                    "201": {
+                        "description": "Category updated successfully"
+                    },
+                    "400": {
+                        "description": "Invalid data"
+                    }
+                }
+            },
+            "delete": {
+                "tags": [
+                    "Comments"
+                ],
+                "summary": "Remove the specified resource from storage",
+                "description": "Delete category",
+                "operationId": "118622da47e05552582f9f0a5a4ac8f5",
+                "parameters": [
+                    {
+                        "name": "id",
+                        "in": "path",
+                        "description": "Delete by UUID or ID",
+                        "required": true,
+                        "schema": {
+                            "type": "string"
+                        }
+                    }
+                ],
+                "responses": {
+                    "200": {
+                        "description": "OK"
+                    },
+                    "404": {
+                        "description": "Not found"
+                    }
+                }
+            }
+        },
+        "/api/v1/comments/page": {
+            "get": {
+                "tags": [
+                    "Comments"
+                ],
+                "summary": "List comments pageable",
+                "description": "Comments a listing pageable of the resource",
+                "operationId": "5278f4b4501b06f374df947122184059",
+                "responses": {
+                    "200": {
+                        "description": "OK"
+                    }
+                }
+            }
+        },
+        "/api/v1/company-data/{id}": {
+            "get": {
+                "tags": [
+                    "Company data"
+                ],
+                "summary": "Show company data by UUID or ID",
+                "description": "Display a listing by UUID or ID",
+                "operationId": "290889394d7eb559603f9f9bf6fa3ffd",
+                "parameters": [
+                    {
+                        "name": "id",
+                        "in": "path",
+                        "description": "Search by UUID or ID",
+                        "required": true,
+                        "schema": {
+                            "type": "string"
+                        }
+                    }
+                ],
+                "responses": {
+                    "200": {
+                        "description": "OK"
+                    },
+                    "404": {
+                        "description": "Not found"
+                    }
+                }
+            },
+            "put": {
+                "tags": [
+                    "Company data"
+                ],
+                "summary": "Update company data",
+                "description": "Update the specified resource in storage",
+                "operationId": "372a82324b505b96f8051ec1888f8125",
+                "parameters": [
+                    {
+                        "name": "id",
+                        "in": "path",
+                        "description": "Search by UUID or ID",
+                        "required": true,
+                        "schema": {
+                            "type": "string"
+                        }
+                    }
+                ],
+                "requestBody": {
+                    "$ref": "#/components/requestBodies/CompanyDataRequest"
+                },
+                "responses": {
+                    "201": {
+                        "description": "Product updated successfully"
+                    },
+                    "400": {
+                        "description": "Invalid data"
+                    }
+                }
+            },
+            "delete": {
+                "tags": [
+                    "Company data"
+                ],
+                "summary": "Remove the specified resource from storage",
+                "description": "Delete company data",
+                "operationId": "00b66be1a31c3eef125403b65606e75f",
+                "parameters": [
+                    {
+                        "name": "id",
+                        "in": "path",
+                        "description": "Delete by UUID or ID",
+                        "required": true,
+                        "schema": {
+                            "type": "string"
+                        }
+                    }
+                ],
+                "responses": {
+                    "200": {
+                        "description": "OK"
+                    },
+                    "404": {
+                        "description": "Not found"
+                    }
+                }
+            }
+        },
+        "/api/v1/company-data/page": {
+            "get": {
+                "tags": [
+                    "Company data"
+                ],
+                "summary": "List company data pageable",
+                "description": "Company data a listing pageable of the resource",
+                "operationId": "af1e694e828d1ac6f444fa99b535986e",
+                "responses": {
+                    "200": {
+                        "description": "OK"
+                    }
+                }
+            }
+        },
+        "/api/v1/company-data/updateMobile": {
+            "post": {
+                "tags": [
+                    "Company data"
+                ],
+                "summary": "Update company data",
+                "description": "Update the specified resource in storage",
+                "operationId": "03dc9e6637bd96ed820e51f1fbe8c324",
+                "requestBody": {
+                    "description": "Informações para registrar uma empresa",
+                    "required": true,
+                    "content": {
+                        "application/json": {
+                            "schema": {
+                                "required": [
+                                    "user_id",
+                                    "companyName",
+                                    "contact"
+                                ],
+                                "properties": {
+                                    "user_id": {
+                                        "type": "string",
+                                        "example": "abc123"
+                                    },
+                                    "companyName": {
+                                        "type": "string",
+                                        "example": "XPTO Angola Lda"
+                                    },
+                                    "nif": {
+                                        "type": "string",
+                                        "example": "123456789"
+                                    },
+                                    "personalNif": {
+                                        "type": "string",
+                                        "example": "987654321"
+                                    },
+                                    "address": {
+                                        "type": "string",
+                                        "example": "Rua do Comércio, Luanda"
+                                    },
+                                    "category": {
+                                        "type": "string",
+                                        "example": "Tecnologia"
+                                    },
+                                    "contactMethod": {
+                                        "type": "string",
+                                        "example": "whatsapp"
+                                    },
+                                    "contact": {
+                                        "type": "string",
+                                        "example": "+244912345678"
+                                    },
+                                    "hasSite": {
+                                        "type": "boolean",
+                                        "example": true
+                                    },
+                                    "website": {
+                                        "type": "string",
+                                        "example": "https://empresa.co.ao"
+                                    }
+                                },
+                                "type": "object"
+                            }
+                        }
+                    }
+                },
+                "responses": {
+                    "201": {
+                        "description": "Product updated successfully"
+                    },
+                    "400": {
+                        "description": "Invalid data"
+                    }
+                }
+            }
+        },
+        "/api/v1/delete-accounts/{id}": {
+            "get": {
+                "tags": [
+                    "Delete accounts"
+                ],
+                "summary": "Show account removed by ID",
+                "description": "Display a listing by ID",
+                "operationId": "2f7a1057c8f94263139f828632f59c5e",
+                "parameters": [
+                    {
+                        "name": "id",
+                        "in": "path",
+                        "description": "Search by ID",
+                        "required": true,
+                        "schema": {
+                            "type": "int"
+                        }
+                    }
+                ],
+                "responses": {
+                    "200": {
+                        "description": "OK"
+                    },
+                    "404": {
+                        "description": "Not found"
+                    }
+                }
+            },
+            "put": {
+                "tags": [
+                    "Delete accounts"
+                ],
+                "summary": "Update account removed",
+                "description": "Update the specified resource in storage",
+                "operationId": "414db2676c3acad6a9b9c42473dbea35",
+                "parameters": [
+                    {
+                        "name": "id",
+                        "in": "path",
+                        "description": "Search by ID",
+                        "required": true,
+                        "schema": {
+                            "type": "string"
+                        }
+                    }
+                ],
+                "requestBody": {
+                    "$ref": "#/components/requestBodies/DeleteAccountRequest"
+                },
+                "responses": {
+                    "201": {
+                        "description": "Category updated successfully"
+                    },
+                    "400": {
+                        "description": "Invalid data"
+                    }
+                }
+            },
+            "delete": {
+                "tags": [
+                    "Delete accounts"
+                ],
+                "summary": "Remove the specified resource from storage",
+                "description": "Delete account removed",
+                "operationId": "f0ab9d958d2f7b997d1989cab1294c9d",
+                "parameters": [
+                    {
+                        "name": "id",
+                        "in": "path",
+                        "description": "Delete by ID",
+                        "required": true,
+                        "schema": {
+                            "type": "string"
+                        }
+                    }
+                ],
+                "responses": {
+                    "200": {
+                        "description": "OK"
+                    },
+                    "404": {
+                        "description": "Not found"
+                    }
+                }
+            }
+        },
+        "/api/v1/delete-accounts/page": {
+            "get": {
+                "tags": [
+                    "Delete accounts"
+                ],
+                "summary": "List delete-accounts pageable",
+                "description": "Delete accounts a listing pageable of the resource",
+                "operationId": "4440193d63b7c60d1c741e0f82f500fd",
+                "responses": {
+                    "200": {
+                        "description": "OK"
+                    }
+                }
+            }
+        },
+        "/api/v1/favorites/search/{id}": {
+            "get": {
+                "tags": [
+                    "Favorites"
+                ],
+                "summary": "Show favorite by ID of user",
+                "description": "Display a listing by ID of user",
+                "operationId": "d4ff3d02e28878e31acde4696d9b5c72",
+                "parameters": [
+                    {
+                        "name": "id",
+                        "in": "path",
+                        "description": "Search by ID of user",
+                        "required": true,
+                        "schema": {
+                            "type": "string"
+                        }
+                    }
+                ],
+                "responses": {
+                    "200": {
+                        "description": "OK"
+                    },
+                    "404": {
+                        "description": "Not found"
+                    }
+                }
+            }
+        },
+        "/api/v1/favorites/store": {
+            "post": {
+                "tags": [
+                    "Favorites"
+                ],
+                "summary": "Save favorite",
+                "description": "Creates and returns a new favorite",
+                "operationId": "6944cf00a6dfd4fb0cb9c78b0a0bd74d",
+                "requestBody": {
+                    "description": "Relationship between user, product, and service",
+                    "required": true,
+                    "content": {
+                        "application/json": {
+                            "schema": {
+                                "required": [
+                                    "user_id"
+                                ],
+                                "properties": {
+                                    "user_id": {
+                                        "description": "User ID (must exist in the users table)",
+                                        "type": "integer",
+                                        "example": 1
+                                    },
+                                    "product_id": {
+                                        "description": "Product ID (optional, must exist in the products table)",
+                                        "type": "integer",
+                                        "example": 10,
+                                        "nullable": true
+                                    },
+                                    "service_id": {
+                                        "description": "Service ID (optional, must exist in the services table)",
+                                        "type": "integer",
+                                        "example": 5,
+                                        "nullable": true
+                                    }
+                                },
+                                "type": "object"
+                            }
+                        }
+                    }
+                },
+                "responses": {
+                    "201": {
+                        "description": "Favorite created successfully"
+                    },
+                    "400": {
+                        "description": "Invalid data"
+                    }
+                }
+            }
+        },
+        "/api/v1/favorites/delete/{id}": {
+            "delete": {
+                "tags": [
+                    "Favorites"
+                ],
+                "summary": "Remove the specified resource from storage",
+                "description": "Delete favorite",
+                "operationId": "fccf4f74c1d63b1a45ba0c9a47b022b2",
+                "parameters": [
+                    {
+                        "name": "id",
+                        "in": "path",
+                        "description": "Delete by ID",
+                        "required": true,
+                        "schema": {
+                            "type": "string"
+                        }
+                    }
+                ],
+                "responses": {
+                    "200": {
+                        "description": "OK"
+                    },
+                    "404": {
+                        "description": "Not found"
+                    }
+                }
+            }
+        },
+        "/api/v1/formal-types/{id}": {
+            "get": {
+                "tags": [
+                    "Formal Type"
+                ],
+                "summary": "Show account formal type by ID",
+                "description": "Display a listing by ID",
+                "operationId": "0bb3098b3c45739adb7cee63eded586f",
+                "parameters": [
+                    {
+                        "name": "id",
+                        "in": "path",
+                        "description": "Search by ID",
+                        "required": true,
+                        "schema": {
+                            "type": "int"
+                        }
+                    }
+                ],
+                "responses": {
+                    "200": {
+                        "description": "OK"
+                    },
+                    "404": {
+                        "description": "Not found"
+                    }
+                }
+            },
+            "put": {
+                "tags": [
+                    "Formal Type"
+                ],
+                "summary": "Update account formal type",
+                "description": "Update the specified resource in storage",
+                "operationId": "af1c31f83e40388b0b5c304e256a38fa",
+                "parameters": [
+                    {
+                        "name": "id",
+                        "in": "path",
+                        "description": "Search by ID",
+                        "required": true,
+                        "schema": {
+                            "type": "string"
+                        }
+                    }
+                ],
+                "requestBody": {
+                    "$ref": "#/components/requestBodies/FormalTypeRequest"
+                },
+                "responses": {
+                    "201": {
+                        "description": "Category updated successfully"
+                    },
+                    "400": {
+                        "description": "Invalid data"
+                    }
+                }
+            },
+            "delete": {
+                "tags": [
+                    "Formal Type"
+                ],
+                "summary": "Remove the specified resource from storage",
+                "description": "Delete account formal type",
+                "operationId": "0603bf86f5dfe8a3d62d874483c5f142",
+                "parameters": [
+                    {
+                        "name": "id",
+                        "in": "path",
+                        "description": "Delete by ID",
+                        "required": true,
+                        "schema": {
+                            "type": "string"
+                        }
+                    }
+                ],
+                "responses": {
+                    "200": {
+                        "description": "OK"
+                    },
+                    "404": {
+                        "description": "Not found"
+                    }
+                }
+            }
+        },
+        "/api/v1/formal-types/page": {
+            "get": {
+                "tags": [
+                    "Formal Type"
+                ],
+                "summary": "List formal-types pageable",
+                "description": "Formal Type a listing pageable of the resource",
+                "operationId": "9b8b6e383330f05fb6f55605590d4661",
+                "responses": {
+                    "200": {
+                        "description": "OK"
+                    }
+                }
+            }
+        },
+        "/api/v1/formal-types/store-mob": {
+            "post": {
+                "tags": [
+                    "Formal Type"
+                ],
+                "summary": "Save account formal type, route for application mobile",
+                "description": "Creates and returns a new account formal type",
+                "operationId": "f189dc9368694595a58f9bb355c765a7",
+                "requestBody": {
+                    "$ref": "#/components/requestBodies/FormalTypeRequest"
+                },
+                "responses": {
+                    "201": {
+                        "description": "Category created successfully"
+                    },
+                    "400": {
+                        "description": "Invalid data"
+                    }
+                }
+            }
+        },
+        "/api/v1/grid-settings/{id}": {
+            "get": {
+                "tags": [
+                    "Grid settings"
+                ],
+                "summary": "Show account grid settings by ID",
+                "description": "Display a listing by ID",
+                "operationId": "bed8db8878016ee3aafe5de0dbf0d887",
+                "parameters": [
+                    {
+                        "name": "id",
+                        "in": "path",
+                        "description": "Search by ID",
+                        "required": true,
+                        "schema": {
+                            "type": "int"
+                        }
+                    }
+                ],
+                "responses": {
+                    "200": {
+                        "description": "OK"
+                    },
+                    "404": {
+                        "description": "Not found"
+                    }
+                }
+            },
+            "put": {
+                "tags": [
+                    "Grid settings"
+                ],
+                "summary": "Update account grid settings",
+                "description": "Update the specified resource in storage",
+                "operationId": "820d0c8b2e9fdfdca19d5112039aca94",
+                "parameters": [
+                    {
+                        "name": "id",
+                        "in": "path",
+                        "description": "Search by ID",
+                        "required": true,
+                        "schema": {
+                            "type": "string"
+                        }
+                    }
+                ],
+                "requestBody": {
+                    "$ref": "#/components/requestBodies/GridSettingsRequest"
+                },
+                "responses": {
+                    "201": {
+                        "description": "Category updated successfully"
+                    },
+                    "400": {
+                        "description": "Invalid data"
+                    }
+                }
+            },
+            "delete": {
+                "tags": [
+                    "Grid settings"
+                ],
+                "summary": "Remove the specified resource from storage",
+                "description": "Delete account grid settings",
+                "operationId": "7166102d657f22c15686462df6804b38",
+                "parameters": [
+                    {
+                        "name": "id",
+                        "in": "path",
+                        "description": "Delete by ID",
+                        "required": true,
+                        "schema": {
+                            "type": "string"
+                        }
+                    }
+                ],
+                "responses": {
+                    "200": {
+                        "description": "OK"
+                    },
+                    "404": {
+                        "description": "Not found"
+                    }
+                }
+            }
+        },
+        "/api/v1/informal-types/{id}": {
+            "get": {
+                "tags": [
+                    "Informal Type"
+                ],
+                "summary": "Show account informal Type by ID",
+                "description": "Display a listing by ID",
+                "operationId": "338582d02fcb19708d3c843fdf5940b2",
+                "parameters": [
+                    {
+                        "name": "id",
+                        "in": "path",
+                        "description": "Search by ID",
+                        "required": true,
+                        "schema": {
+                            "type": "int"
+                        }
+                    }
+                ],
+                "responses": {
+                    "200": {
+                        "description": "OK"
+                    },
+                    "404": {
+                        "description": "Not found"
+                    }
+                }
+            },
+            "put": {
+                "tags": [
+                    "Informal Type"
+                ],
+                "summary": "Update account informal Type",
+                "description": "Update the specified resource in storage",
+                "operationId": "c176f0f3f05525c5a8f09560ef5cb10e",
+                "parameters": [
+                    {
+                        "name": "id",
+                        "in": "path",
+                        "description": "Search by ID",
+                        "required": true,
+                        "schema": {
+                            "type": "string"
+                        }
+                    }
+                ],
+                "requestBody": {
+                    "$ref": "#/components/requestBodies/InformalTypeRequest"
+                },
+                "responses": {
+                    "201": {
+                        "description": "Category updated successfully"
+                    },
+                    "400": {
+                        "description": "Invalid data"
+                    }
+                }
+            },
+            "delete": {
+                "tags": [
+                    "Informal Type"
+                ],
+                "summary": "Remove the specified resource from storage",
+                "description": "Delete account informal Type",
+                "operationId": "f9e4dbbaffa77d7f90058d019925dc04",
+                "parameters": [
+                    {
+                        "name": "id",
+                        "in": "path",
+                        "description": "Delete by ID",
+                        "required": true,
+                        "schema": {
+                            "type": "string"
+                        }
+                    }
+                ],
+                "responses": {
+                    "200": {
+                        "description": "OK"
+                    },
+                    "404": {
+                        "description": "Not found"
+                    }
+                }
+            }
+        },
+        "/api/v1/informal-types/page": {
+            "get": {
+                "tags": [
+                    "Informal Type"
+                ],
+                "summary": "List informal-types pageable",
+                "description": "Informal Type a listing pageable of the resource",
+                "operationId": "ad836bb70aa21c3cdd38e3507ce35dcf",
+                "responses": {
+                    "200": {
+                        "description": "OK"
+                    }
+                }
+            }
+        },
+        "/api/v1/informal-types/store-mob": {
+            "post": {
+                "tags": [
+                    "Informal Type"
+                ],
+                "summary": "Save account informal Type, route for application mobile",
+                "description": "Creates and returns a new account informal Type",
+                "operationId": "3e1c59aa8676c232ff2010e8a63a36ba",
+                "requestBody": {
+                    "$ref": "#/components/requestBodies/InformalTypeRequest"
+                },
+                "responses": {
+                    "201": {
+                        "description": "Category created successfully"
+                    },
+                    "400": {
+                        "description": "Invalid data"
+                    }
+                }
+            }
+        },
+        "/api/v1/personal-data/{id}": {
+            "get": {
+                "tags": [
+                    "Personal data"
+                ],
+                "summary": "Show personal data by UUID or ID",
+                "description": "Display a listing by UUID or ID",
+                "operationId": "63a4bd548d4a4f76aeb17575ed333468",
+                "parameters": [
+                    {
+                        "name": "id",
+                        "in": "path",
+                        "description": "Search by UUID or ID",
+                        "required": true,
+                        "schema": {
+                            "type": "string"
+                        }
+                    }
+                ],
+                "responses": {
+                    "200": {
+                        "description": "OK"
+                    },
+                    "404": {
+                        "description": "Not found"
+                    }
+                }
+            },
+            "put": {
+                "tags": [
+                    "Personal data"
+                ],
+                "summary": "Update personal data",
+                "description": "Update the specified resource in storage",
+                "operationId": "371f94d60f6fd1230f3440c98c55a551",
+                "parameters": [
+                    {
+                        "name": "id",
+                        "in": "path",
+                        "description": "Search by UUID or ID",
+                        "required": true,
+                        "schema": {
+                            "type": "string"
+                        }
+                    }
+                ],
+                "requestBody": {
+                    "$ref": "#/components/requestBodies/PersonalDataRequest"
+                },
+                "responses": {
+                    "201": {
+                        "description": "Product updated successfully"
+                    },
+                    "400": {
+                        "description": "Invalid data"
+                    }
+                }
+            },
+            "delete": {
+                "tags": [
+                    "Personal data"
+                ],
+                "summary": "Remove the specified resource from storage",
+                "description": "Delete personal data",
+                "operationId": "5817b929c55bf98b5e9a5a7b4a93b7fd",
+                "parameters": [
+                    {
+                        "name": "id",
+                        "in": "path",
+                        "description": "Delete by UUID or ID",
+                        "required": true,
+                        "schema": {
+                            "type": "string"
+                        }
+                    }
+                ],
+                "responses": {
+                    "200": {
+                        "description": "OK"
+                    },
+                    "404": {
+                        "description": "Not found"
+                    }
+                }
+            }
+        },
+        "/api/v1/personal-data/page": {
+            "get": {
+                "tags": [
+                    "Personal data"
+                ],
+                "summary": "List personal data pageable",
+                "description": "Personal data a listing pageable of the resource",
+                "operationId": "770e3280e148aee03ea908c2dfa054e5",
+                "responses": {
+                    "200": {
+                        "description": "OK"
+                    }
+                }
+            }
+        },
+        "/api/v1/products/{id}": {
+            "get": {
+                "tags": [
+                    "Products"
+                ],
+                "summary": "Show product by UUID or ID",
+                "description": "Display a listing by UUID or ID",
+                "operationId": "8748f72c2186b0ac0133ca5861486652",
+                "parameters": [
+                    {
+                        "name": "id",
+                        "in": "path",
+                        "description": "Search by UUID or ID",
+                        "required": true,
+                        "schema": {
+                            "type": "string"
+                        }
+                    }
+                ],
+                "responses": {
+                    "200": {
+                        "description": "OK"
+                    },
+                    "404": {
+                        "description": "Not found"
+                    }
+                }
+            },
+            "put": {
+                "tags": [
+                    "Products"
+                ],
+                "summary": "Update product",
+                "description": "Update the specified resource in storage",
+                "operationId": "2049addb15f0f14b089c02bb50a931c7",
+                "parameters": [
+                    {
+                        "name": "id",
+                        "in": "path",
+                        "description": "Search by UUID or ID",
+                        "required": true,
+                        "schema": {
+                            "type": "string"
+                        }
+                    }
+                ],
+                "requestBody": {
+                    "$ref": "#/components/requestBodies/ProductRequest"
+                },
+                "responses": {
+                    "201": {
+                        "description": "Product updated successfully"
+                    },
+                    "400": {
+                        "description": "Invalid data"
+                    }
+                }
+            },
+            "delete": {
+                "tags": [
+                    "Products"
+                ],
+                "summary": "Remove the specified resource from storage",
+                "description": "Delete product",
+                "operationId": "2c5c1b5d1828403fc4026d20cc378781",
+                "parameters": [
+                    {
+                        "name": "id",
+                        "in": "path",
+                        "description": "Delete by UUID or ID",
+                        "required": true,
+                        "schema": {
+                            "type": "string"
+                        }
+                    }
+                ],
+                "responses": {
+                    "200": {
+                        "description": "OK"
+                    },
+                    "404": {
+                        "description": "Not found"
+                    }
+                }
+            }
+        },
+        "/api/v1/products/suppliers": {
+            "get": {
+                "tags": [
+                    "Products"
+                ],
+                "summary": "List products of suppliers",
+                "description": "Display listing of the resource",
+                "operationId": "5739d961550957279311cce5b1d0b146",
+                "responses": {
+                    "200": {
+                        "description": "OK"
+                    }
+                }
+            }
+        },
+        "/api/v1/products/page": {
+            "get": {
+                "tags": [
+                    "Products"
+                ],
+                "summary": "List products pageable",
+                "description": "products a listing pageable of the resource",
+                "operationId": "b92baf08f5aba17145b1e5e6d84d97fc",
+                "responses": {
+                    "200": {
+                        "description": "OK"
+                    }
+                }
+            }
+        },
+        "/api/v1/products/find-by-category/{id}": {
+            "get": {
+                "tags": [
+                    "Products"
+                ],
+                "summary": "Display products by category",
+                "description": "Display a products",
+                "operationId": "c2574ffe620ccea55e9342853250c4c4",
+                "parameters": [
+                    {
+                        "name": "id",
+                        "in": "path",
+                        "description": "Search by UUID or ID of category",
+                        "required": true,
+                        "schema": {
+                            "type": "string"
+                        }
+                    }
+                ],
+                "responses": {
+                    "200": {
+                        "description": "OK"
+                    }
+                }
+            }
+        },
+        "/api/v1/products/search/{search}": {
+            "get": {
+                "tags": [
+                    "Products"
+                ],
+                "summary": "Search product",
+                "description": "Search product by text",
+                "operationId": "7b41a70acbe00eb42fb42b6df1c24fc3",
+                "parameters": [
+                    {
+                        "name": "search",
+                        "in": "path",
+                        "description": "Search product",
+                        "required": true,
+                        "schema": {
+                            "type": "string"
+                        }
+                    }
+                ],
+                "responses": {
+                    "200": {
+                        "description": "OK"
+                    }
+                }
+            }
+        },
+        "/api/v1/products/suppliers/search/{search}": {
+            "get": {
+                "tags": [
+                    "Products"
+                ],
+                "summary": "Search product of suppliers",
+                "description": "Search product of suppliers by text",
+                "operationId": "fcf690c47ad9e44c6a347a503187c6b2",
+                "parameters": [
+                    {
+                        "name": "search",
+                        "in": "path",
+                        "description": "Search product of suppliers",
+                        "required": true,
+                        "schema": {
+                            "type": "string"
+                        }
+                    }
+                ],
+                "responses": {
+                    "200": {
+                        "description": "OK"
+                    }
+                }
+            }
+        },
+        "/api/v1/product-service/find-by-user/{id}": {
+            "get": {
+                "tags": [
+                    "Product and Service"
+                ],
+                "summary": "Get products and service created por user",
+                "description": "Display a listing products or services created by user",
+                "operationId": "37fd549f92aea805b32fcfb4bf4f7898",
+                "parameters": [
+                    {
+                        "name": "id",
+                        "in": "path",
+                        "description": "Inform by UUID or ID of user",
+                        "required": true,
+                        "schema": {
+                            "type": "string"
+                        }
+                    }
+                ],
+                "responses": {
+                    "200": {
+                        "description": "OK"
+                    },
+                    "404": {
+                        "description": "Not found"
+                    }
+                }
+            }
+        },
+        "/api/v1/rating-products/{id}": {
+            "get": {
+                "tags": [
+                    "Rating products"
+                ],
+                "summary": "Show account rating products by ID",
+                "description": "Display a listing by ID",
+                "operationId": "28c2caac8be4cce992a9a9eede3e6efe",
+                "parameters": [
+                    {
+                        "name": "id",
+                        "in": "path",
+                        "description": "Search by ID",
+                        "required": true,
+                        "schema": {
+                            "type": "int"
+                        }
+                    }
+                ],
+                "responses": {
+                    "200": {
+                        "description": "OK"
+                    },
+                    "404": {
+                        "description": "Not found"
+                    }
+                }
+            },
+            "put": {
+                "tags": [
+                    "Rating products"
+                ],
+                "summary": "Update account rating products",
+                "description": "Update the specified resource in storage",
+                "operationId": "b64cde8de33d402e01d012587f91b321",
+                "parameters": [
+                    {
+                        "name": "id",
+                        "in": "path",
+                        "description": "Search by ID",
+                        "required": true,
+                        "schema": {
+                            "type": "string"
+                        }
+                    }
+                ],
+                "requestBody": {
+                    "$ref": "#/components/requestBodies/RatingProductRequest"
+                },
+                "responses": {
+                    "201": {
+                        "description": "Category updated successfully"
+                    },
+                    "400": {
+                        "description": "Invalid data"
+                    }
+                }
+            },
+            "delete": {
+                "tags": [
+                    "Rating products"
+                ],
+                "summary": "Remove the specified resource from storage",
+                "description": "Delete account rating products",
+                "operationId": "c9481cabd26d70a421a4e4e7f65d0ce7",
+                "parameters": [
+                    {
+                        "name": "id",
+                        "in": "path",
+                        "description": "Delete by ID",
+                        "required": true,
+                        "schema": {
+                            "type": "string"
+                        }
+                    }
+                ],
+                "responses": {
+                    "200": {
+                        "description": "OK"
+                    },
+                    "404": {
+                        "description": "Not found"
+                    }
+                }
+            }
+        },
+        "/api/v1/rating-products/page": {
+            "get": {
+                "tags": [
+                    "Rating products"
+                ],
+                "summary": "List rating products pageable",
+                "description": "Rating products a listing pageable of the resource",
+                "operationId": "6f47e9890a170e617afda3d242541223",
+                "responses": {
+                    "200": {
+                        "description": "OK"
+                    }
+                }
+            }
+        },
+        "/api/v1/rating-services/{id}": {
+            "get": {
+                "tags": [
+                    "Rating services"
+                ],
+                "summary": "Show account rating services by ID",
+                "description": "Display a listing by ID",
+                "operationId": "6c72a3a758855e82a9620cd064f422a7",
+                "parameters": [
+                    {
+                        "name": "id",
+                        "in": "path",
+                        "description": "Search by ID",
+                        "required": true,
+                        "schema": {
+                            "type": "int"
+                        }
+                    }
+                ],
+                "responses": {
+                    "200": {
+                        "description": "OK"
+                    },
+                    "404": {
+                        "description": "Not found"
+                    }
+                }
+            },
+            "put": {
+                "tags": [
+                    "Rating services"
+                ],
+                "summary": "Update account rating services",
+                "description": "Update the specified resource in storage",
+                "operationId": "3a8813a3ba002267f690c65c00d2f479",
+                "parameters": [
+                    {
+                        "name": "id",
+                        "in": "path",
+                        "description": "Search by ID",
+                        "required": true,
+                        "schema": {
+                            "type": "string"
+                        }
+                    }
+                ],
+                "requestBody": {
+                    "$ref": "#/components/requestBodies/RatingProductRequest"
+                },
+                "responses": {
+                    "201": {
+                        "description": "Category updated successfully"
+                    },
+                    "400": {
+                        "description": "Invalid data"
+                    }
+                }
+            },
+            "delete": {
+                "tags": [
+                    "Rating services"
+                ],
+                "summary": "Remove the specified resource from storage",
+                "description": "Delete account rating services",
+                "operationId": "104dfb03c8a631bf476ad5e1158bdceb",
+                "parameters": [
+                    {
+                        "name": "id",
+                        "in": "path",
+                        "description": "Delete by ID",
+                        "required": true,
+                        "schema": {
+                            "type": "string"
+                        }
+                    }
+                ],
+                "responses": {
+                    "200": {
+                        "description": "OK"
+                    },
+                    "404": {
+                        "description": "Not found"
+                    }
+                }
+            }
+        },
+        "/api/v1/rating-services/page": {
+            "get": {
+                "tags": [
+                    "Rating services"
+                ],
+                "summary": "List rating services pageable",
+                "description": "Rating services a listing pageable of the resource",
+                "operationId": "e8857a03e0da2f6328f969ffe54bf24d",
+                "responses": {
+                    "200": {
+                        "description": "OK"
+                    }
+                }
+            }
+        },
+        "/api/v1/search/product/{text}": {
+            "get": {
+                "tags": [
+                    "Search"
+                ],
+                "summary": "Search product",
+                "description": "Search product by text",
+                "operationId": "3c532062853435af2e2a1235abd255b1",
+                "parameters": [
+                    {
+                        "name": "text",
+                        "in": "path",
+                        "description": "Inform text for search",
+                        "required": true,
+                        "schema": {
+                            "type": "string"
+                        }
+                    }
+                ],
+                "responses": {
+                    "200": {
+                        "description": "OK"
+                    }
+                }
+            }
+        },
+        "/api/v1/search/service/{text}": {
+            "get": {
+                "tags": [
+                    "Search"
+                ],
+                "summary": "Search service",
+                "description": "Search service by text",
+                "operationId": "4ae79ed7ef4f3b88299e8604016b2ba5",
+                "parameters": [
+                    {
+                        "name": "text",
+                        "in": "path",
+                        "description": "Inform text for search",
+                        "required": true,
+                        "schema": {
+                            "type": "string"
+                        }
+                    }
+                ],
+                "responses": {
+                    "200": {
+                        "description": "OK"
+                    }
+                }
+            }
+        },
+        "/api/v1/services/{id}": {
+            "get": {
+                "tags": [
+                    "Services"
+                ],
+                "summary": "Show service by UUID or ID",
+                "description": "Display a listing by UUID or ID",
+                "operationId": "44cb7dfea8e77db07410a619432db677",
+                "parameters": [
+                    {
+                        "name": "id",
+                        "in": "path",
+                        "description": "Search by UUID or ID",
+                        "required": true,
+                        "schema": {
+                            "type": "string"
+                        }
+                    }
+                ],
+                "responses": {
+                    "200": {
+                        "description": "OK"
+                    },
+                    "404": {
+                        "description": "Not found"
+                    }
+                }
+            },
+            "put": {
+                "tags": [
+                    "Services"
+                ],
+                "summary": "Update service",
+                "description": "Update the specified resource in storage",
+                "operationId": "979d70ee9df7a38ce852ec300319dba4",
+                "parameters": [
+                    {
+                        "name": "id",
+                        "in": "path",
+                        "description": "Search by UUID or ID",
+                        "required": true,
+                        "schema": {
+                            "type": "string"
+                        }
+                    }
+                ],
+                "requestBody": {
+                    "$ref": "#/components/requestBodies/ServiceRequest"
+                },
+                "responses": {
+                    "201": {
+                        "description": "Service updated successfully"
+                    },
+                    "400": {
+                        "description": "Invalid data"
+                    }
+                }
+            },
+            "delete": {
+                "tags": [
+                    "Services"
+                ],
+                "summary": "Remove the specified resource from storage",
+                "description": "Delete service",
+                "operationId": "fb21085e7fda5b8d75361ca0d1e1c9ac",
+                "parameters": [
+                    {
+                        "name": "id",
+                        "in": "path",
+                        "description": "Delete by UUID or ID",
+                        "required": true,
+                        "schema": {
+                            "type": "string"
+                        }
+                    }
+                ],
+                "responses": {
+                    "200": {
+                        "description": "OK"
+                    },
+                    "404": {
+                        "description": "Not found"
+                    }
+                }
+            }
+        },
+        "/api/v1/services/page": {
+            "get": {
+                "tags": [
+                    "Services"
+                ],
+                "summary": "List services pageable",
+                "description": "Services a listing pageable of the resource",
+                "operationId": "c01eae2668a46d8f279649d28c554dc8",
+                "responses": {
+                    "200": {
+                        "description": "OK"
+                    }
+                }
+            }
+        },
+        "/api/v1/services/find-by-category/{id}": {
+            "get": {
+                "tags": [
+                    "Services"
+                ],
+                "summary": "Display services by category",
+                "description": "Display a services",
+                "operationId": "48afe3b68aed6568127a5bab387adff6",
+                "parameters": [
+                    {
+                        "name": "id",
+                        "in": "path",
+                        "description": "Search by UUID or ID of category",
+                        "required": true,
+                        "schema": {
+                            "type": "string"
+                        }
+                    }
+                ],
+                "responses": {
+                    "200": {
+                        "description": "OK"
+                    }
+                }
+            }
+        },
+        "/api/v1/services/search/{search}": {
+            "get": {
+                "tags": [
+                    "Services"
+                ],
+                "summary": "Search service",
+                "description": "Search service by text",
+                "operationId": "0d6bea05465244fd56273d6f577dbccd",
+                "parameters": [
+                    {
+                        "name": "search",
+                        "in": "path",
+                        "description": "Search service",
+                        "required": true,
+                        "schema": {
+                            "type": "string"
+                        }
+                    }
+                ],
+                "responses": {
+                    "200": {
+                        "description": "OK"
+                    }
+                }
+            }
+        },
+        "/api/v1/sms-opt": {
+            "post": {
+                "tags": [
+                    "Send OTP"
+                ],
+                "summary": "Get code otp for create account",
+                "description": "Send code OTP in phone number",
+                "operationId": "b7370788a9113a974fc0e73820757d1e",
+                "requestBody": {
+                    "description": "Send OTP for create accout",
+                    "required": true,
+                    "content": {
+                        "application/json": {
+                            "schema": {
+                                "required": [
+                                    "phoneNumber"
+                                ],
+                                "properties": {
+                                    "phoneNumber": {
+                                        "description": "Your phone number",
+                                        "type": "string"
+                                    }
+                                },
+                                "type": "object"
+                            }
+                        }
+                    }
+                },
+                "responses": {
+                    "200": {
+                        "description": "Login successful"
+                    }
+                }
+            }
+        },
+        "/api/v1/sms-opt-forget": {
+            "post": {
+                "tags": [
+                    "Send OTP"
+                ],
+                "summary": "Get code otp for recoved password",
+                "description": "Send code OTP in phone number",
+                "operationId": "cffd4185bfab3d6659911e8ada27665b",
+                "requestBody": {
+                    "description": "Send OTP for recoved password",
+                    "required": true,
+                    "content": {
+                        "application/json": {
+                            "schema": {
+                                "required": [
+                                    "phoneNumber"
+                                ],
+                                "properties": {
+                                    "phoneNumber": {
+                                        "description": "Your phone number",
+                                        "type": "string"
+                                    }
+                                },
+                                "type": "object"
+                            }
+                        }
+                    }
+                },
+                "responses": {
+                    "200": {
+                        "description": "Login successful"
+                    }
+                }
+            }
+        },
+        "/api/v1/users/page": {
+            "get": {
+                "tags": [
+                    "Users"
+                ],
+                "summary": "List users pageable",
+                "description": "Display a listing pageable of the resource",
+                "operationId": "070c155b59310ab712956a03985c26c2",
+                "responses": {
+                    "200": {
+                        "description": "OK"
+                    }
+                }
+            }
+        },
+        "/api/v1/users/{id}": {
+            "get": {
+                "tags": [
+                    "Users"
+                ],
+                "summary": "Show user by UUID or ID",
+                "description": "Display a listing by UUID or ID",
+                "operationId": "085009c95d26f5813970f284cd9c0a15",
+                "parameters": [
+                    {
+                        "name": "id",
+                        "in": "path",
+                        "description": "Search by UUID or ID",
+                        "required": true,
+                        "schema": {
+                            "type": "string"
+                        }
+                    }
+                ],
+                "responses": {
+                    "200": {
+                        "description": "OK"
+                    },
+                    "404": {
+                        "description": "Not found"
+                    }
+                }
+            },
+            "put": {
+                "tags": [
+                    "Users"
+                ],
+                "summary": "Update user",
+                "description": "Update the specified resource in storage",
+                "operationId": "5421cd2fc5597c62ea6b29afd6cc6667",
+                "parameters": [
+                    {
+                        "name": "id",
+                        "in": "path",
+                        "description": "Search by UUID or ID",
+                        "required": true,
+                        "schema": {
+                            "type": "string"
+                        }
+                    }
+                ],
+                "requestBody": {
+                    "$ref": "#/components/requestBodies/UserPutRequest"
+                },
+                "responses": {
+                    "201": {
+                        "description": "User updated successfully"
+                    },
+                    "400": {
+                        "description": "Invalid data"
+                    }
+                }
+            },
+            "post": {
+                "tags": [
+                    "Users"
+                ],
+                "summary": "Update user",
+                "description": "Update the specified resource in storage",
+                "operationId": "cfeeab3d71e03568aad719ae26bea7ed",
+                "parameters": [
+                    {
+                        "name": "id",
+                        "in": "path",
+                        "description": "Search by UUID or ID",
+                        "required": true,
+                        "schema": {
+                            "type": "string"
+                        }
+                    }
+                ],
+                "requestBody": {
+                    "$ref": "#/components/requestBodies/UserRequest"
+                },
+                "responses": {
+                    "201": {
+                        "description": "User updated successfully"
+                    },
+                    "400": {
+                        "description": "Invalid data"
+                    }
+                }
+            },
+            "delete": {
+                "tags": [
+                    "Users"
+                ],
+                "summary": "Remove the specified resource from storage",
+                "description": "Display a listing by UUID or ID",
+                "operationId": "40e711ec039bbe0c70fc87b1178fefe9",
+                "parameters": [
+                    {
+                        "name": "id",
+                        "in": "path",
+                        "description": "Delete by UUID or ID",
+                        "required": true,
+                        "schema": {
+                            "type": "string"
+                        }
+                    }
+                ],
+                "responses": {
+                    "200": {
+                        "description": "OK"
+                    },
+                    "404": {
+                        "description": "Not found"
+                    }
+                }
+            }
+        },
+        "/api/v1/users/exist-by-phone": {
+            "post": {
+                "tags": [
+                    "Users"
+                ],
+                "summary": "Verify number phone exists",
+                "description": "Retorn true if phone exists",
+                "operationId": "503d321a29a369cfc92f5f93d9d70775",
+                "requestBody": {
+                    "content": {
+                        "application/json": {
+                            "schema": {
+                                "properties": {
+                                    "phoneNumber": {
+                                        "type": "string"
+                                    }
+                                },
+                                "type": "object",
+                                "example": {
+                                    "phoneNumber": 902389232
+                                }
+                            }
+                        }
+                    }
+                },
+                "responses": {
+                    "200": {
+                        "description": "OK"
+                    }
+                }
+            }
+        },
+        "/api/v1/users/{id}/updateMobile": {
+            "put": {
+                "tags": [
+                    "Users"
+                ],
+                "summary": "Update user, request made by the mobile application",
+                "description": "Update the specified resource in storage",
+                "operationId": "b94108be7a75e260a9514e58d80be571",
+                "parameters": [
+                    {
+                        "name": "id",
+                        "in": "path",
+                        "description": "Search by UUID or ID",
+                        "required": true,
+                        "schema": {
+                            "type": "string"
+                        }
+                    }
+                ],
+                "requestBody": {
+                    "content": {
+                        "application/json": {
+                            "schema": {
+                                "properties": {
+                                    "password": {
+                                        "type": "string",
+                                        "example": "password"
+                                    },
+                                    "yourPassword": {
+                                        "type": "string",
+                                        "example": "password"
+                                    },
+                                    "name": {
+                                        "type": "string",
+                                        "example": "Jhon Paul"
+                                    },
+                                    "phone": {
+                                        "type": "string",
+                                        "example": "919324323"
+                                    },
+                                    "email": {
+                                        "type": "string",
+                                        "example": "update.test@gmail.com"
+                                    }
+                                },
+                                "type": "object"
+                            }
+                        }
+                    }
+                },
+                "responses": {
+                    "201": {
+                        "description": "User updated successfully"
+                    },
+                    "400": {
+                        "description": "Invalid data"
+                    }
+                }
+            },
+            "post": {
+                "tags": [
+                    "Users"
+                ],
+                "summary": "Update user, request made by the mobile application",
+                "description": "Update the specified resource in storage",
+                "operationId": "90e4905c2fac2521df16236e9a3c883a",
+                "parameters": [
+                    {
+                        "name": "id",
+                        "in": "path",
+                        "description": "Search by UUID or ID",
+                        "required": true,
+                        "schema": {
+                            "type": "string"
+                        }
+                    }
+                ],
+                "requestBody": {
+                    "required": true,
+                    "content": {
+                        "multipart/form-data": {
+                            "schema": {
+                                "required": [
+                                    "name",
+                                    "phone"
+                                ],
+                                "properties": {
+                                    "password": {
+                                        "type": "string",
+                                        "example": "password"
+                                    },
+                                    "yourPassword": {
+                                        "type": "string",
+                                        "example": "password"
+                                    },
+                                    "name": {
+                                        "type": "string",
+                                        "example": "Jhon Paul"
+                                    },
+                                    "phone": {
+                                        "type": "string",
+                                        "example": "919324323"
+                                    },
+                                    "email": {
+                                        "type": "string",
+                                        "example": "update.test@gmail.com"
+                                    },
+                                    "image": {
+                                        "description": "User image (format: file)",
+                                        "type": "string",
+                                        "format": "binary"
+                                    }
+                                },
+                                "type": "object"
+                            }
+                        }
+                    }
+                },
+                "responses": {
+                    "201": {
+                        "description": "User updated successfully"
+                    },
+                    "400": {
+                        "description": "Invalid data"
+                    }
+                }
+            }
+        },
+        "/api/v1/users/{id}/updatePassword": {
+            "put": {
+                "tags": [
+                    "Users"
+                ],
+                "summary": "Update password of user",
+                "description": "Update password",
+                "operationId": "bf9e51c2d930dc53c2d32e3d57fd17cb",
+                "parameters": [
+                    {
+                        "name": "id",
+                        "in": "path",
+                        "description": "Search by UUID or ID",
+                        "required": true,
+                        "schema": {
+                            "type": "string"
+                        }
+                    }
+                ],
+                "requestBody": {
+                    "content": {
+                        "application/json": {
+                            "schema": {
+                                "properties": {
+                                    "password": {
+                                        "type": "string",
+                                        "example": "password"
+                                    },
+                                    "yourPassword": {
+                                        "type": "string",
+                                        "example": "password"
+                                    }
+                                },
+                                "type": "object"
+                            }
+                        }
+                    }
+                },
+                "responses": {
+                    "201": {
+                        "description": "User password updated successfully"
+                    },
+                    "400": {
+                        "description": "Invalid data"
+                    }
+                }
+            },
+            "post": {
+                "tags": [
+                    "Users"
+                ],
+                "summary": "Update password of user",
+                "description": "Update password",
+                "operationId": "eeb90433f841b0d1ed408a0c80ca01f0",
+                "parameters": [
+                    {
+                        "name": "id",
+                        "in": "path",
+                        "description": "Search by UUID or ID",
+                        "required": true,
+                        "schema": {
+                            "type": "string"
+                        }
+                    }
+                ],
+                "requestBody": {
+                    "content": {
+                        "application/json": {
+                            "schema": {
+                                "properties": {
+                                    "password": {
+                                        "type": "string",
+                                        "example": "password"
+                                    },
+                                    "yourPassword": {
+                                        "type": "string",
+                                        "example": "password"
+                                    }
+                                },
+                                "type": "object"
+                            }
+                        }
+                    }
+                },
+                "responses": {
+                    "201": {
+                        "description": "User password updated successfully"
+                    },
+                    "400": {
+                        "description": "Invalid data"
+                    }
+                }
+            }
+        },
+        "/api/v1/user-types/{id}": {
+            "get": {
+                "tags": [
+                    "User types"
+                ],
+                "summary": "Show  user type by UUID or ID",
+                "description": "Display a listing by UUID or ID",
+                "operationId": "ed64de1f0198dc2a06dc4a5979b06f9d",
+                "parameters": [
+                    {
+                        "name": "id",
+                        "in": "path",
+                        "description": "Search by UUID or ID",
+                        "required": true,
+                        "schema": {
+                            "type": "string"
+                        }
+                    }
+                ],
+                "responses": {
+                    "200": {
+                        "description": "OK"
+                    },
+                    "404": {
+                        "description": "Not found"
+                    }
+                }
+            },
+            "put": {
+                "tags": [
+                    "User types"
+                ],
+                "summary": "Update user type",
+                "description": "Update the specified resource in storage",
+                "operationId": "2276575b221311880b8da2d303e79659",
+                "parameters": [
+                    {
+                        "name": "id",
+                        "in": "path",
+                        "description": "Search by UUID or ID",
+                        "required": true,
+                        "schema": {
+                            "type": "string"
+                        }
+                    }
+                ],
+                "requestBody": {
+                    "$ref": "#/components/requestBodies/ServiceRequest"
+                },
+                "responses": {
+                    "201": {
+                        "description": "Service updated successfully"
+                    },
+                    "400": {
+                        "description": "Invalid data"
+                    }
+                }
+            },
+            "delete": {
+                "tags": [
+                    "User types"
+                ],
+                "summary": "Remove the specified resource from storage",
+                "description": "Delete user type",
+                "operationId": "2383dddb0429e245ed02d0fbe8355d11",
+                "parameters": [
+                    {
+                        "name": "id",
+                        "in": "path",
+                        "description": "Delete by UUID or ID",
+                        "required": true,
+                        "schema": {
+                            "type": "string"
+                        }
+                    }
+                ],
+                "responses": {
+                    "200": {
+                        "description": "OK"
+                    },
+                    "404": {
+                        "description": "Not found"
+                    }
+                }
+            }
+        },
+        "/api/v1/user-types/page": {
+            "get": {
+                "tags": [
+                    "User types"
+                ],
+                "summary": "List user types pageable",
+                "description": "User types a listing pageable of the resource",
+                "operationId": "0842c43c05418f5c109c9ca69c329027",
+                "responses": {
+                    "200": {
+                        "description": "OK"
+                    }
+                }
+            }
+        },
+        "/api/v1/websites/{id}": {
+            "get": {
+                "tags": [
+                    "Websites"
+                ],
+                "summary": "Show  website by UUID or ID",
+                "description": "Display a listing by UUID or ID",
+                "operationId": "73e54f69ef659072781868761492de6c",
+                "parameters": [
+                    {
+                        "name": "id",
+                        "in": "path",
+                        "description": "Search by UUID or ID",
+                        "required": true,
+                        "schema": {
+                            "type": "string"
+                        }
+                    }
+                ],
+                "responses": {
+                    "200": {
+                        "description": "OK"
+                    },
+                    "404": {
+                        "description": "Not found"
+                    }
+                }
+            },
+            "put": {
+                "tags": [
+                    "Websites"
+                ],
+                "summary": "Update website",
+                "description": "Update the specified resource in storage",
+                "operationId": "f932b31bde26dfa2db8c76b5559c49ee",
+                "parameters": [
+                    {
+                        "name": "id",
+                        "in": "path",
+                        "description": "Search by UUID or ID",
+                        "required": true,
+                        "schema": {
+                            "type": "string"
+                        }
+                    }
+                ],
+                "requestBody": {
+                    "$ref": "#/components/requestBodies/WebsiteRequest"
+                },
+                "responses": {
+                    "201": {
+                        "description": "Service updated successfully"
+                    },
+                    "400": {
+                        "description": "Invalid data"
+                    }
+                }
+            },
+            "delete": {
+                "tags": [
+                    "Websites"
+                ],
+                "summary": "Remove the specified resource from storage",
+                "description": "Delete website",
+                "operationId": "b305358f6353e8ccba33d90bbfcd87c3",
+                "parameters": [
+                    {
+                        "name": "id",
+                        "in": "path",
+                        "description": "Delete by UUID or ID",
+                        "required": true,
+                        "schema": {
+                            "type": "string"
+                        }
+                    }
+                ],
+                "responses": {
+                    "200": {
+                        "description": "OK"
+                    },
+                    "404": {
+                        "description": "Not found"
+                    }
+                }
+            }
+        },
+        "/api/v1/websites/page": {
+            "get": {
+                "tags": [
+                    "Websites"
+                ],
+                "summary": "List websites pageable",
+                "description": "Websites a listing pageable of the resource",
+                "operationId": "8cd7651bb23820c5e5b0936c985ff3ca",
+                "responses": {
+                    "200": {
+                        "description": "OK"
+                    }
+                }
+            }
+        }
+    },
+    "components": {
+        "requestBodies": {
+            "BannedTermRequest": {
+                "description": "Texto proibido que será cadastrado",
+                "required": true,
+                "content": {
+                    "application/json": {
+                        "schema": {
+                            "required": [
+                                "text_en"
+                            ],
+                            "properties": {
+                                "text_en": {
+                                    "type": "string",
+                                    "example": "badword"
+                                }
+                            },
+                            "type": "object"
+                        }
+                    }
+                }
+            },
+            "BannerRequest": {
+                "description": "Dados do banner",
+                "required": true,
+                "content": {
+                    "application/json": {
+                        "schema": {
+                            "required": [
+                                "name",
+                                "imagem",
+                                "posicao_grupo",
+                                "posicao_interna"
+                            ],
+                            "properties": {
+                                "name": {
+                                    "type": "string",
+                                    "example": "Banner de Verão"
+                                },
+                                "imagem": {
+                                    "type": "string",
+                                    "example": "https://meusite.com/banners/banner-verao.jpg"
+                                },
+                                "posicao_tela": {
+                                    "type": "string",
+                                    "enum": [
+                                        "tudo",
+                                        "servicos",
+                                        "produtos"
+                                    ],
+                                    "example": "servicos"
+                                },
+                                "posicao_grupo": {
+                                    "type": "string",
+                                    "example": "home"
+                                },
+                                "posicao_interna": {
+                                    "type": "string",
+                                    "example": "topo"
+                                },
+                                "type": {
+                                    "type": "string",
+                                    "enum": [
+                                        "horizontal",
+                                        "vertical"
+                                    ],
+                                    "example": "horizontal"
+                                }
+                            },
+                            "type": "object"
+                        }
+                    }
+                }
+            },
+            "BusinessDetailRequest": {
+                "description": "Payload para criação ou atualização de um Business Detail",
+                "required": true,
+                "content": {
+                    "application/json": {
+                        "schema": {
+                            "required": [
+                                "user_id"
+                            ],
+                            "properties": {
+                                "name": {
+                                    "type": "string",
+                                    "example": "Loja XPTO"
+                                },
+                                "phone_preference": {
+                                    "type": "string",
+                                    "example": "mobile"
+                                },
+                                "phone": {
+                                    "type": "string",
+                                    "example": "+244923000000"
+                                },
+                                "whatsapp": {
+                                    "type": "string",
+                                    "example": "+244923000000"
+                                },
+                                "email": {
+                                    "type": "string",
+                                    "example": "empresa@email.com"
+                                },
+                                "website_url": {
+                                    "type": "string",
+                                    "example": "https://www.empresa.com"
+                                },
+                                "is_sell_product": {
+                                    "type": "boolean",
+                                    "example": true
+                                },
+                                "user_id": {
+                                    "type": "string",
+                                    "example": "123e4567-e89b-12d3-a456-426614174000"
+                                }
+                            },
+                            "type": "object"
+                        }
+                    }
+                }
+            },
+            "CategoryRequest": {
+                "description": "Dados da categoria",
+                "required": true,
+                "content": {
+                    "application/json": {
+                        "schema": {
+                            "required": [
+                                "name"
+                            ],
+                            "properties": {
+                                "name": {
+                                    "type": "string",
+                                    "example": "Tecnologia"
+                                },
+                                "type": {
+                                    "type": "string",
+                                    "enum": [
+                                        "service",
+                                        "product"
+                                    ],
+                                    "example": "service"
+                                },
+                                "code": {
+                                    "type": "string",
+                                    "example": "TEC001"
+                                },
+                                "description": {
+                                    "type": "string",
+                                    "example": "Categoria relacionada a serviços de tecnologia."
+                                },
+                                "icon": {
+                                    "description": "Imagem do ícone da categoria (máx: 1MB)",
+                                    "type": "string",
+                                    "format": "binary"
+                                }
+                            },
+                            "type": "object"
+                        }
+                    }
+                }
+            },
+            "CommentRequest": {
+                "description": "Dados de um comentário enviado pelo usuário",
+                "required": true,
+                "content": {
+                    "application/json": {
+                        "schema": {
+                            "required": [
+                                "name",
+                                "phone",
+                                "feedback",
+                                "send_data"
+                            ],
+                            "properties": {
+                                "name": {
+                                    "type": "string",
+                                    "example": "João da Silva"
+                                },
+                                "phone": {
+                                    "type": "string",
+                                    "example": "+244923123456"
+                                },
+                                "feedback": {
+                                    "type": "string",
+                                    "example": "Gostei muito do serviço!"
+                                },
+                                "send_data": {
+                                    "type": "string",
+                                    "format": "date-time",
+                                    "example": "2025-04-21T15:00:00Z"
+                                }
+                            },
+                            "type": "object"
+                        }
+                    }
+                }
+            },
+            "CompanyDataRequest": {
+                "description": "Dados da empresa",
+                "required": true,
+                "content": {
+                    "application/json": {
+                        "schema": {
+                            "required": [
+                                "nif",
+                                "user_id"
+                            ],
+                            "properties": {
+                                "name": {
+                                    "type": "string",
+                                    "example": "Empresa XPTO Ltda"
+                                },
+                                "nif": {
+                                    "type": "string",
+                                    "example": "123456789"
+                                },
+                                "location": {
+                                    "type": "string",
+                                    "example": "Luanda, Angola"
+                                },
+                                "certification": {
+                                    "type": "string",
+                                    "example": "ISO 9001"
+                                },
+                                "user_id": {
+                                    "type": "string",
+                                    "example": "abc123xyz"
+                                }
+                            },
+                            "type": "object"
+                        }
+                    }
+                }
+            },
+            "DeleteAccountRequest": {
+                "description": "Dados para solicitar exclusão de conta",
+                "required": true,
+                "content": {
+                    "application/json": {
+                        "schema": {
+                            "required": [
+                                "user_id",
+                                "feedback"
+                            ],
+                            "properties": {
+                                "user_id": {
+                                    "type": "string",
+                                    "example": "12345"
+                                },
+                                "name": {
+                                    "type": "string",
+                                    "example": "João Silva",
+                                    "nullable": true
+                                },
+                                "phone": {
+                                    "type": "string",
+                                    "example": "+244912345678",
+                                    "nullable": true
+                                },
+                                "feedback": {
+                                    "type": "string",
+                                    "example": "Quero excluir minha conta porque..."
+                                }
+                            },
+                            "type": "object"
+                        }
+                    }
+                }
+            },
+            "FormalTypeRequest": {
+                "description": "Formal type data",
+                "required": true,
+                "content": {
+                    "application/json": {
+                        "schema": {
+                            "required": [
+                                "nif",
+                                "user_id"
+                            ],
+                            "properties": {
+                                "name": {
+                                    "description": "Formal name (optional)",
+                                    "type": "string",
+                                    "example": "Company XYZ",
+                                    "nullable": true
+                                },
+                                "nif": {
+                                    "description": "Tax Identification Number (required)",
+                                    "type": "string",
+                                    "example": "123456789"
+                                },
+                                "docs": {
+                                    "description": "Associated documents (optional)",
+                                    "type": "string",
+                                    "example": "doc1.pdf, doc2.pdf",
+                                    "nullable": true
+                                },
+                                "website": {
+                                    "description": "Company website URL (optional)",
+                                    "type": "string",
+                                    "format": "url",
+                                    "example": "https://example.com",
+                                    "nullable": true
+                                },
+                                "whatsapp": {
+                                    "description": "WhatsApp number (optional)",
+                                    "type": "string",
+                                    "example": "+244900000000",
+                                    "nullable": true
+                                },
+                                "phone": {
+                                    "description": "Phone number (optional)",
+                                    "type": "string",
+                                    "example": "+244912345678",
+                                    "nullable": true
+                                },
+                                "offers": {
+                                    "description": "Details of available offers (optional)",
+                                    "type": "string",
+                                    "example": "Discount on services",
+                                    "nullable": true
+                                },
+                                "user_id": {
+                                    "description": "User ID (required)",
+                                    "type": "integer",
+                                    "example": 1
+                                }
+                            },
+                            "type": "object"
+                        }
+                    }
+                }
+            },
+            "GridSettingsRequest": {
+                "description": "Grid configuration parameters",
+                "required": true,
+                "content": {
+                    "application/json": {
+                        "schema": {
+                            "properties": {
+                                "cross_axis_count": {
+                                    "description": "Number of items along the cross axis",
+                                    "type": "integer",
+                                    "example": 3
+                                },
+                                "child_aspect_ratio": {
+                                    "description": "Aspect ratio of each child item",
+                                    "type": "number",
+                                    "format": "float",
+                                    "example": 1.5
+                                },
+                                "main_axis_spacing": {
+                                    "description": "Spacing along the main axis",
+                                    "type": "integer",
+                                    "example": 10
+                                },
+                                "cross_axis_spacing": {
+                                    "description": "Spacing along the cross axis",
+                                    "type": "integer",
+                                    "example": 8
+                                }
+                            },
+                            "type": "object"
+                        }
+                    }
+                }
+            },
+            "InformalTypeRequest": {
+                "description": "Informal type data",
+                "required": true,
+                "content": {
+                    "application/json": {
+                        "schema": {
+                            "required": [
+                                "nif",
+                                "user_id"
+                            ],
+                            "properties": {
+                                "name": {
+                                    "description": "Informal entity name (optional)",
+                                    "type": "string",
+                                    "example": "John Doe",
+                                    "nullable": true
+                                },
+                                "nif": {
+                                    "description": "Tax Identification Number (required)",
+                                    "type": "string",
+                                    "example": "123456789"
+                                },
+                                "docs": {
+                                    "description": "Documents related to the entity (optional)",
+                                    "type": "string",
+                                    "example": "doc1.pdf, doc2.pdf",
+                                    "nullable": true
+                                },
+                                "website": {
+                                    "description": "Website URL (optional)",
+                                    "type": "string",
+                                    "example": "https://example.com",
+                                    "nullable": true
+                                },
+                                "whatsapp": {
+                                    "description": "WhatsApp number (optional)",
+                                    "type": "string",
+                                    "example": "+244912345678",
+                                    "nullable": true
+                                },
+                                "phone": {
+                                    "description": "Phone number (optional)",
+                                    "type": "string",
+                                    "example": "+244922334455",
+                                    "nullable": true
+                                },
+                                "offers": {
+                                    "description": "Available offers or promotions (optional)",
+                                    "type": "string",
+                                    "example": "Free consultations on weekends",
+                                    "nullable": true
+                                },
+                                "user_id": {
+                                    "description": "User ID who is submitting the request (required)",
+                                    "type": "integer",
+                                    "example": 1
+                                }
+                            },
+                            "type": "object"
+                        }
+                    }
+                }
+            },
+            "PersonalDataRequest": {
+                "description": "Personal data payload",
+                "required": true,
+                "content": {
+                    "application/json": {
+                        "schema": {
+                            "properties": {
+                                "name": {
+                                    "type": "string",
+                                    "example": "John",
+                                    "nullable": true
+                                },
+                                "full_name": {
+                                    "type": "string",
+                                    "example": "John Doe",
+                                    "nullable": true
+                                },
+                                "nif_bi": {
+                                    "type": "string",
+                                    "example": "003456789LA012",
+                                    "nullable": true
+                                },
+                                "phone": {
+                                    "type": "string",
+                                    "example": "+244923456789",
+                                    "nullable": true
+                                },
+                                "image": {
+                                    "type": "string",
+                                    "example": "https://example.com/profile.jpg",
+                                    "nullable": true
+                                },
+                                "user_id": {
+                                    "description": "ID of the associated user (required)",
+                                    "type": "integer",
+                                    "example": 1
+                                }
+                            },
+                            "type": "object"
+                        }
+                    }
+                }
+            },
+            "ProductRequest": {
+                "description": "Dados do produto",
+                "required": true,
+                "content": {
+                    "application/json": {
+                        "schema": {
+                            "required": [
+                                "name",
+                                "price"
+                            ],
+                            "properties": {
+                                "name": {
+                                    "type": "string",
+                                    "example": "Cadeira Gamer"
+                                },
+                                "image": {
+                                    "type": "string",
+                                    "example": "cadeira.jpg"
+                                },
+                                "video": {
+                                    "type": "string",
+                                    "example": "video.mp4"
+                                },
+                                "description": {
+                                    "type": "string",
+                                    "example": "Uma cadeira confortável e ergonômica."
+                                },
+                                "price": {
+                                    "type": "number",
+                                    "format": "float",
+                                    "example": 499.99
+                                },
+                                "promotion": {
+                                    "type": "boolean",
+                                    "example": true
+                                },
+                                "delivery": {
+                                    "type": "boolean",
+                                    "example": false
+                                },
+                                "user_id": {
+                                    "type": "integer",
+                                    "example": 1
+                                },
+                                "category_id": {
+                                    "type": "integer",
+                                    "example": 5
+                                }
+                            },
+                            "type": "object"
+                        }
+                    }
+                }
+            },
+            "RatingProductRequest": {
+                "description": "Product rating payload",
+                "required": true,
+                "content": {
+                    "application/json": {
+                        "schema": {
+                            "required": [
+                                "user_id",
+                                "product_id",
+                                "value"
+                            ],
+                            "properties": {
+                                "user_id": {
+                                    "description": "ID of the user",
+                                    "type": "integer",
+                                    "example": 1
+                                },
+                                "product_id": {
+                                    "description": "ID of the product",
+                                    "type": "integer",
+                                    "example": 5
+                                },
+                                "value": {
+                                    "description": "Rating value",
+                                    "type": "number",
+                                    "format": "float",
+                                    "example": 4.5
+                                }
+                            },
+                            "type": "object"
+                        }
+                    }
+                }
+            },
+            "ServiceRequest": {
+                "description": "Dados do serviço",
+                "required": true,
+                "content": {
+                    "application/json": {
+                        "schema": {
+                            "required": [
+                                "name"
+                            ],
+                            "properties": {
+                                "name": {
+                                    "type": "string",
+                                    "example": "Consultoria em Marketing"
+                                },
+                                "image": {
+                                    "type": "string",
+                                    "example": "servico.jpg"
+                                },
+                                "video": {
+                                    "type": "string",
+                                    "example": "apresentacao.mp4"
+                                },
+                                "description": {
+                                    "type": "string",
+                                    "example": "Descrição completa do serviço."
+                                },
+                                "user_id": {
+                                    "type": "string",
+                                    "example": "1"
+                                },
+                                "category_id": {
+                                    "type": "string",
+                                    "example": "2"
+                                }
+                            },
+                            "type": "object"
+                        }
+                    }
+                }
+            },
+            "UserPutRequest": {
+                "description": "User data",
+                "required": true,
+                "content": {
+                    "application/json": {
+                        "schema": {
+                            "required": [
+                                "name",
+                                "phone",
+                                "password",
+                                "confirmed"
+                            ],
+                            "properties": {
+                                "name": {
+                                    "type": "string",
+                                    "example": "João Silva"
+                                },
+                                "email": {
+                                    "type": "string",
+                                    "format": "email",
+                                    "example": "joao@email.com"
+                                },
+                                "phone": {
+                                    "type": "string",
+                                    "example": "912345678"
+                                },
+                                "gender": {
+                                    "type": "string",
+                                    "example": "Masculino"
+                                },
+                                "address": {
+                                    "type": "string",
+                                    "example": "Rua ABC, nº 123"
+                                },
+                                "image": {
+                                    "type": "string",
+                                    "example": "perfil.jpg"
+                                },
+                                "birthday": {
+                                    "type": "string",
+                                    "example": "1990-05-20"
+                                }
+                            },
+                            "type": "object"
+                        }
+                    }
+                }
+            },
+            "UserRequest": {
+                "description": "User data for creation or update, including optional image upload",
+                "required": true,
+                "content": {
+                    "multipart/form-data": {
+                        "schema": {
+                            "required": [
+                                "name",
+                                "phone",
+                                "password",
+                                "confirmed"
+                            ],
+                            "properties": {
+                                "name": {
+                                    "description": "User's full name",
+                                    "type": "string",
+                                    "example": "João Silva"
+                                },
+                                "email": {
+                                    "description": "User's email address",
+                                    "type": "string",
+                                    "format": "email",
+                                    "example": "joao@email.com"
+                                },
+                                "password": {
+                                    "description": "User's password",
+                                    "type": "string",
+                                    "example": "123456"
+                                },
+                                "confirmed": {
+                                    "description": "Password confirmation",
+                                    "type": "string",
+                                    "example": "123456"
+                                },
+                                "phone": {
+                                    "description": "User's phone number",
+                                    "type": "string",
+                                    "example": "912345678"
+                                },
+                                "gender": {
+                                    "description": "User's gender",
+                                    "type": "string",
+                                    "example": "Male"
+                                },
+                                "address": {
+                                    "description": "User's address",
+                                    "type": "string",
+                                    "example": "123 ABC Street"
+                                },
+                                "image": {
+                                    "description": "Profile image file upload",
+                                    "type": "string",
+                                    "format": "binary"
+                                },
+                                "birthday": {
+                                    "description": "User's birth date (YYYY-MM-DD)",
+                                    "type": "string",
+                                    "example": "1990-05-20"
+                                }
+                            },
+                            "type": "object"
+                        }
+                    }
+                }
+            },
+            "WebsiteRequest": {
+                "description": "Website creation or update data",
+                "required": true,
+                "content": {
+                    "application/json": {
+                        "schema": {
+                            "required": [
+                                "url",
+                                "shop_type",
+                                "is_integration_api",
+                                "business_detail_id"
+                            ],
+                            "properties": {
+                                "url": {
+                                    "description": "URL of the website",
+                                    "type": "string",
+                                    "example": "https://example.com"
+                                },
+                                "shop_type": {
+                                    "description": "Type of the shop",
+                                    "type": "string",
+                                    "example": "ecommerce"
+                                },
+                                "is_integration_api": {
+                                    "description": "Indicates if the website integrates via API",
+                                    "type": "boolean",
+                                    "example": true
+                                },
+                                "business_detail_id": {
+                                    "description": "ID that refers to the business details",
+                                    "type": "string",
+                                    "example": "bd_12345"
+                                }
+                            },
+                            "type": "object"
+                        }
+                    }
+                }
+            }
+        }
+    },
+    "tags": [
+        {
+            "name": "Banned Terms",
+            "description": "Operations related to terms banned"
+        },
+        {
+            "name": "Banners",
+            "description": "Operations related to banners"
+        },
+        {
+            "name": "Business Details",
+            "description": "Operations related to business details"
+        },
+        {
+            "name": "Categories",
+            "description": "Operations related to categories"
+        },
+        {
+            "name": "Comments",
+            "description": "Operations related to comments"
+        },
+        {
+            "name": "Company data",
+            "description": "Operations related to company data"
+        },
+        {
+            "name": "Favorites",
+            "description": "Operations related to favorites"
+        },
+        {
+            "name": "Formal Type",
+            "description": "Operations related to formal types"
+        },
+        {
+            "name": "Grid settings",
+            "description": "Operations related to grid settings"
+        },
+        {
+            "name": "Informal Type",
+            "description": "Operations related to informal Types"
+        },
+        {
+            "name": "Integration root",
+            "description": "Operations related to integration root"
+        },
+        {
+            "name": "Integration shopify",
+            "description": "Operations related to integration shopify"
+        },
+        {
+            "name": "Integration wordpress",
+            "description": "Operations related to integration wordpress"
+        },
+        {
+            "name": "Personal data",
+            "description": "Operations related to personal data"
+        },
+        {
+            "name": "Products",
+            "description": "Operations related to products"
+        },
+        {
+            "name": "Product and Service",
+            "description": "Operations related product and services"
+        },
+        {
+            "name": "Rating products",
+            "description": "Operations related to rating products"
+        },
+        {
+            "name": "Rating services",
+            "description": "Operations related to rating services"
+        },
+        {
+            "name": "Forget Password",
+            "description": "Operations related forget password"
+        },
+        {
+            "name": "Register",
+            "description": "Operations related create account"
+        },
+        {
+            "name": "Search",
+            "description": "Operations related with search of product and service"
+        },
+        {
+            "name": "Services",
+            "description": "Operations related to services"
+        },
+        {
+            "name": "Send OTP",
+            "description": "Operations for send sms(OTP)"
+        },
+        {
+            "name": "Users",
+            "description": "Operations related to users"
+        },
+        {
+            "name": "User types",
+            "description": "Operations related to user types"
+        },
+        {
+            "name": "Websites",
+            "description": "Operations related to websites"
+        },
+        {
+            "name": "Delete accounts",
+            "description": "Delete accounts"
+        },
+        {
+            "name": "Authentication",
+            "description": "Authentication"
+        }
+    ]
+}

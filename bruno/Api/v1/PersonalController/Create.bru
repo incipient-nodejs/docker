@@ -1,0 +1,25 @@
+meta {
+  name: Create
+  type: http
+  seq: 4
+}
+
+post {
+  url: {{url}}/{{personalData}}
+  body: json
+  auth: none
+}
+
+body:json {
+  {
+      "user_id": "575b2d89-cf9e-4c1f-8fd1-6a0499ad4a4c",
+      "category_id": "bb4294e6-ca60-475c-a92f-a6a8b1f9dc43",
+      "name": "Smartphone Galaxy S23",
+      "image": "smartphones/galaxy-s23.jpg",
+      "video": "smartphones/galaxy-s23-preview.mp4",
+      "description": "Smartphone",
+      "price": "4999.99",
+      "promotion": 0,
+      "delivery": 0
+  }
+}

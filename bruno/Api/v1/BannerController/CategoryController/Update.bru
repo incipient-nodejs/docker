@@ -1,0 +1,19 @@
+meta {
+  name: Update
+  type: http
+  seq: 8
+}
+
+put {
+  url: {{url}}/{{category}}/09d9827b-b15c-430b-94bc-fd2685aa5396
+  body: json
+  auth: none
+}
+
+body:json {
+  {
+    "name": "Testa",
+    "type": "service",
+    "description": "vida"
+  }
+}

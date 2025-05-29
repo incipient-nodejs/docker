@@ -1,0 +1,34 @@
+meta {
+  name: Create-mobile
+  type: http
+  seq: 9
+}
+
+post {
+  url: {{url}}/{{product}}
+  body: json
+  auth: none
+}
+
+body:json {
+  {
+    "user_id": 13,
+    "category_id": 10,
+    "name": "TudKabi",
+    "description": "Melhor produto",
+    "price": 936.0,
+    "min_qtd": 856,
+    "promotion": 0,
+    "delivery": 0
+  }
+  
+}
+
+body:multipart-form {
+  image: @file(C:\Users\sedra\OneDrive\Imagens\Capturas de Ecrã\Captura de Ecrã (1).png)
+  name: testaa
+  description: rrra
+  price: 7200
+  user_id: 3
+  category_id: 2
+}

@@ -1,0 +1,30 @@
+meta {
+  name: Update Mobile
+  type: http
+  seq: 7
+}
+
+post {
+  url: {{url}}/{{user}}/48/updateMobile
+  body: json
+  auth: none
+}
+
+headers {
+  content-type: application/json
+  Authorization: Bearer
+  x_token_tudokabir: 0195dd05-7c55-7137-8118-bc6b883d3968
+}
+
+body:json {
+  {
+    "password": "000000",
+    "yourPassword": "000000"
+  }
+}
+
+body:multipart-form {
+  yourPassword: 000000
+  password: 000000
+  ~image: @file(C:\Users\sedra\OneDrive\Imagens\Capturas de Ecrã\Captura de ecrã 2025-02-19 202314.png)
+}

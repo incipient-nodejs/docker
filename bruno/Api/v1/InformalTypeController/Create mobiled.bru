@@ -1,0 +1,44 @@
+meta {
+  name: Create mobiled
+  type: http
+  seq: 7
+}
+
+post {
+  url: {{url}}/{{informalType}}/store-mob
+  body: json
+  auth: none
+}
+
+body:json {
+  {
+    "user_id": 57,
+    "name": "Sedrac",
+    "nif": 987656442,
+    "offers": null,
+    "website": null,
+    "whatsapp": null,
+    "phone": null,
+    "category": "Fabricantes",
+    "location": null,
+    "latitude": null,
+    "longitude": null,
+    "personNif": null,
+    "personName": null,
+    "personPhone": null,
+    "personLocation": null,
+    "tipo_contacto": "Telefone",
+    "contacto": 958360876
+  }
+}
+
+body:multipart-form {
+  user_id: 5
+  name: Testar de novo
+  nif: 990879789
+  offers: Produtos
+  website: http://localhost.com
+  whatsapp: 990879789
+  phone: 990879789
+  doc: @file(C:\Users\sedra\OneDrive\Imagens\Capturas de Ecrã\Captura de ecrã 2025-02-19 202314.png)
+}

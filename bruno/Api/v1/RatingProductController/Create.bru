@@ -1,0 +1,20 @@
+meta {
+  name: Create
+  type: http
+  seq: 4
+}
+
+post {
+  url: {{url}}/{{ratingProduct}}
+  body: json
+  auth: none
+}
+
+body:json {
+  {
+    "user_id": 50,
+    "product_id": 113,
+    "value": 5,
+    "comment": "Falta melhorias e revisão"
+  }
+}

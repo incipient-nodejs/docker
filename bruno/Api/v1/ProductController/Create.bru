@@ -1,0 +1,33 @@
+meta {
+  name: Create
+  type: http
+  seq: 4
+}
+
+post {
+  url: {{url}}/{{product}}
+  body: multipartForm
+  auth: none
+}
+
+body:json {
+  {
+    "user_id": "6581b79f-abae-4138-989c-a576cbda315f",
+    "category_id": 12,
+    "name": "Arroz Text",
+    "description": "vida loca",
+    "price": 9000.0,
+    "promotion": 0,
+    "delivery": 0
+  }
+  
+}
+
+body:multipart-form {
+  name: testaa
+  description: rrra
+  price: 7200
+  user_id: 3
+  category_id: 2
+  ~image: @file()
+}

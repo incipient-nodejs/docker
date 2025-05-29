@@ -1,0 +1,5 @@
+Cache[replace]{
+    UserService: findAll, create, delete,
+    ProductService: findAll, create, update, delete, updateWithModel,
+    CategoryService: findAll, create, delete, updateWithModel
+}

@@ -1,0 +1,20 @@
+meta {
+  name: Create
+  type: http
+  seq: 4
+}
+
+post {
+  url: {{url}}/{{banner}}
+  body: json
+  auth: none
+}
+
+body:json {
+  {
+     "name": "Paulo Dias Lucas",
+     "phone": "983298091",
+     "password": "12345678",
+     "confirmed": "12345678"
+  }
+}

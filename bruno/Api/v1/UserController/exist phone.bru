@@ -1,0 +1,17 @@
+meta {
+  name: exist phone
+  type: http
+  seq: 8
+}
+
+post {
+  url: {{url}}/{{user}}/exist-by-phone
+  body: json
+  auth: none
+}
+
+body:json {
+  {
+    "phoneNumber": "936269780"
+  }
+}

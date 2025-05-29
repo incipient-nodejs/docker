@@ -1,0 +1,40 @@
+meta {
+  name: Create mobile
+  type: http
+  seq: 7
+}
+
+post {
+  url: {{url}}/{{formalType}}/store-mob
+  body: json
+  auth: none
+}
+
+body:json {
+  {
+    "user_id": 13,
+    "name": "PedroSoft",
+    "nif": 123445,
+    "offers": "",
+    "website": "",
+    "whatsapp": "",
+    "phone": "Telefone",
+    "category": "Fabricantes",
+    "personNif": 123344,
+    "personName": "Paulo Febral",
+    "personPhone": "970000000",
+    "personLocation": ""
+  }
+  
+}
+
+body:multipart-form {
+  user_id: 5
+  name: Testar de novo
+  nif: 990879789
+  offers: Produtos
+  website: http://localhost.com
+  whatsapp: 990879789
+  phone: 990879789
+  doc: @file(C:\Users\sedra\OneDrive\Imagens\Capturas de Ecrã\Captura de ecrã 2025-02-19 202314.png)
+}

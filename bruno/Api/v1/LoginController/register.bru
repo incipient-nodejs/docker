@@ -1,0 +1,20 @@
+meta {
+  name: register
+  type: http
+  seq: 2
+}
+
+post {
+  url: {{url}}/register
+  body: json
+  auth: none
+}
+
+body:json {
+  {
+     "name": "Paula Quina",
+     "phone": "903298091",
+     "password": "12345678",
+     "confirmed": "12345678"
+  }
+}

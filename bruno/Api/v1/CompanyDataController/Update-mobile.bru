@@ -1,0 +1,42 @@
+meta {
+  name: Update-mobile
+  type: http
+  seq: 6
+}
+
+post {
+  url: {{url}}/{{companyData}}/updateMobile
+  body: json
+  auth: none
+}
+
+body:json {
+  {
+    "companyName": "Sedrac",
+    "nif": "1234556",
+    "personalNif": "Text",
+    "address": "Luanda",
+    "contact": "93258741",
+    "website": "Text",
+    "contactMethod": "Telefone",
+    "category": "Geral",
+    "user_id": 3,
+    "hasSite": "Não"
+  }
+  
+}
+
+body:multipart-form {
+  user_id: 3
+  companyName: Testegol
+  nif: 345679
+  personalNif: 7654321
+  address: Rua Exemplo
+  category: Geral
+  contactMethod: Email
+  contact: 997654321
+  website: https://www.empresa.com
+  hasSite: Sim
+  certification: @file(C:\Users\sedra\Downloads\Telas Fluxos e Funcionalidades (6).pdf)
+  image: @file(C:\Users\sedra\OneDrive\Imagens\Capturas de Ecrã\Captura de ecrã 2025-02-19 202314.png)
+}

@@ -1,0 +1,9 @@
+{
+  "version": "1",
+  "name": "mdb-web-v1",
+  "type": "collection",
+  "ignore": [
+    "node_modules",
+    ".git"
+  ]
+}

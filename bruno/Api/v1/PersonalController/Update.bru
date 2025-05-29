@@ -1,0 +1,29 @@
+meta {
+  name: Update
+  type: http
+  seq: 5
+}
+
+put {
+  url: {{url}}/{{personalData}}/9225060f-60f7-4d74-8f83-c7204ee09794
+  body: json
+  auth: none
+}
+
+headers {
+  content-type: multipart/form-data
+}
+
+body:json {
+  {
+    "name": "Smartphone Galaxy S23",
+    "image": "smartphones/galaxy-s23.jpg",
+    "price": "4999.99"
+  }
+}
+
+body:multipart-form {
+  image: @file(C:\Users\sedra\OneDrive\Imagens\Capturas de Ecrã\Captura de Ecrã (1).png)
+  name: home
+  price: 0
+}

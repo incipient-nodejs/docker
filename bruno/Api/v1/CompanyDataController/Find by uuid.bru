@@ -1,0 +1,21 @@
+meta {
+  name: Find by uuid
+  type: http
+  seq: 3
+}
+
+get {
+  url: {{url}}/{{companyData}}/76469a2b-e4ce-473d-bb46-8b1208a8568a
+  body: json
+  auth: none
+}
+
+body:json {
+  {
+      "user_id": 4,
+      "name": "Empresa Beta",
+      "nif": "987654321",
+      "location": "Porto",
+      "certification": "ISO 14001"
+  }
+}

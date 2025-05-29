@@ -1,0 +1,22 @@
+meta {
+  name: Create
+  type: http
+  seq: 4
+}
+
+post {
+  url: {{url}}/{{formalType}}
+  body: json
+  auth: none
+}
+
+body:json {
+  {
+    "user_id": 5,
+    "name": "HdL social",
+    "nif": "98233333",
+    "offers": "Produtos",
+    "website": "http://localhos",
+    "whatsapp": "98233333"
+  }
+}

@@ -1,0 +1,37 @@
+#Display a listing of the resource
+GET http://localhost:8000/api/v1/user-types
+Content-Type: application/json
+###
+
+#Display a listing by uuid.
+GET http://localhost:8000/api/v1/user-types/09d9827b-b15c-430b-94bc-fd2685aa5396
+Content-Type: application/json
+###
+
+#Display a listing page of the resource
+GET http://localhost:8000/api/v1/user-types/page
+Content-Type: application/json
+###
+
+#Store a newly created resource in storage.
+POST http://localhost:8000/api/v1/user-types
+Content-Type: application/json
+
+{
+    "name": "TEST"
+}
+###
+
+#Update the specified resource in storage.
+PUT http://localhost:8000/api/v1/user-types/09d9827b-b15c-430b-94bc-fd2685aa5396
+Content-Type: application/json
+
+{
+  "name": "Teste",
+}
+###
+
+#Remove the specified resource from storage.
+DELETE  http://localhost:8000/api/v1/user-types/09d9827b-b15c-430b-94bc-fd2685aa5396
+Content-Type: application/json
+###

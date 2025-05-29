@@ -1,0 +1,22 @@
+meta {
+  name: Update
+  type: http
+  seq: 5
+}
+
+put {
+  url: {{url}}/{{service}}/ff618a0c-bee9-48e0-8a26-2ccccd2d302d
+  body: json
+  auth: none
+}
+
+body:json {
+  {
+      "name": "Smartphone Galaxy S23",
+      "image": "smartphones/galaxy-s23.jpg",
+      "video": "smartphones/galaxy-s23-preview.mp4",
+      "description": "Smartphone",
+      "promotion": 0,
+      "delivery": 0
+  }
+}
