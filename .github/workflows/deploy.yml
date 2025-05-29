@@ -41,50 +41,51 @@ jobs:
             host: ${{ secrets.SSH_HOST }}
             username: ${{ secrets.SSH_USER }}
             key: ${{ secrets.SSH_PRIVATE_KEY }}
-            script: |
-              set -e
-              
-              echo "📁 Ensuring deployment directory exists..."
-              mkdir -p $HOME/tudkabir
-              cd $HOME/tudkabir
+          script: |
+            set -e
 
-              echo "📝 Writing .env file..."
-              echo "${{ secrets.ENV_FILE }}" > .env
+            mkdir -p $HOME/tudkabir
+            cd $HOME/tudkabir
 
-              echo "▶ Pulling new image..."
-              docker pull ghcr.io/${{ github.repository_owner }}/tudkabir:latest
+            echo "📝 Writing .env file..."
+            echo "${{ secrets.ENV_FILE }}" > .env
 
-              echo "▶ Starting new container on port 9001..."
-              docker run -d \
-                --name tubkair_temp \
-                --env-file .env \
-                -p 9001:9000 \
-                ghcr.io/${{ github.repository_owner }}/tudkabir:latest
+            echo "🔐 Logging in to GHCR..."
+            echo "${{ secrets.GHCR_TOKEN }}" | docker login ghcr.io -u ${{ github.actor }} --password-stdin
 
-              echo "▶ Waiting for container to become healthy..."
-              for i in {1..10}; do
-                if curl -s http://localhost:9001/healthz | grep -q "ok"; then
-                  echo "✅ Health check passed"
-                  break
-                fi
-                echo "⏳ Waiting for health check..."
-                sleep 2
-                if [ "$i" -eq 10 ]; then
-                  echo "❌ New container failed health check. Aborting."
-                  docker stop tubkair_temp && docker rm tubkair_temp
-                  exit 1
-                fi
-              done
+            echo "▶ Pulling new image..."
+            docker pull ghcr.io/${{ github.repository_owner }}/tudkabir:latest
 
-              echo "🛑 Stopping old container..."
-              docker stop tubkair_app || true
-              docker rm tubkair_app || true
+            echo "▶ Starting new container on port 9001..."
+            docker run -d \
+              --name tubkair_temp \
+              --env-file .env \
+              -p 9001:9000 \
+              ghcr.io/${{ github.repository_owner }}/tudkabir:latest
 
-              echo "🚀 Renaming new container..."
-              docker rename tubkair_temp tubkair_app
+            echo "▶ Waiting for container to become healthy..."
+            for i in {1..10}; do
+              if curl -s http://localhost:9001/healthz | grep -q "ok"; then
+                echo "✅ Health check passed"
+                break
+              fi
+              echo "⏳ Waiting for health check..."
+              sleep 2
+              if [ "$i" -eq 10 ]; then
+                echo "❌ New container failed health check. Aborting."
+                docker stop tubkair_temp && docker rm tubkair_temp
+                exit 1
+              fi
+            done
 
-              echo "🧹 Pruning unused images and volumes..."
-              docker system prune -a -f --volumes
+            echo "🛑 Stopping old container..."
+            docker stop tubkair_app || true
+            docker rm tubkair_app || true
 
-              echo "✅ Zero downtime deployment complete!"
-              
+            echo "🚀 Renaming new container..."
+            docker rename tubkair_temp tubkair_app
+
+            echo "🧹 Pruning unused images and volumes..."
+            docker system prune -a -f --volumes
+
+            echo "✅ Zero downtime deployment complete!"
