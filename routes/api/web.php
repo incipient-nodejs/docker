@@ -3,6 +3,10 @@
 
 use Illuminate\Support\Facades\Route;
 
+Route::get('/healthz', function () {
+    return response()->json(['status' => 'ok']);
+});
+
 Route::post('/login/web', [App\Http\Controllers\Web\v1\UserController::class, 'login']);
 Route::post('/web/otp', [App\Http\Controllers\Web\v1\UserController::class, 'sendOTPForgetPassword']);
 Route::get('/web/otp', [App\Http\Controllers\Web\v1\UserController::class, 'verifyOtp']);
