@@ -1,52 +1,38 @@
-# Set base image
 FROM php:8.2-fpm
 
-# Set working directory
-WORKDIR /var/www
-
-# Install system dependencies
+# Install system dependencies and PHP extensions
 RUN apt-get update && apt-get install -y \
-    git \
+    bash \
     curl \
-    libpng-dev \
-    libonig-dev \
-    libxml2-dev \
-    zip \
+    git \
     unzip \
+    zip \
     libzip-dev \
-    libpq-dev \
-    && docker-php-ext-install pdo pdo_mysql mbstring exif pcntl bcmath gd zip
+    libonig-dev \
+    zlib1g-dev \
+    && docker-php-ext-install pdo pdo_mysql mbstring zip \
+    && apt-get clean
 
-# Install Composer
+# Install Composer from official image
 COPY --from=composer:2 /usr/bin/composer /usr/bin/composer
 
-# Create minimal composer.json if it doesn't exist
-RUN if [ ! -f composer.json ]; then \
-    echo '{}' > composer.json && \
-    composer config name "temp/project" && \
-    composer config description "Temporary project" && \
-    composer config minimum-stability "dev" && \
-    composer config prefer-stable true; \
-    fi
+# Set working directory inside container
+WORKDIR /var/www
 
-# Install Laravel dependencies
-RUN composer require laravel/framework --no-scripts --no-autoloader && \
-    composer require laravel/sanctum --no-scripts --no-autoloader && \
-    composer require laravel/tinker --no-scripts --no-autoloader
+# Copy app code (but no vendor or composer.lock expected)
+COPY . .
 
-# Copy the rest of the application files
-COPY . /var/www
+# Create Laravel required directories
+RUN mkdir -p storage/framework/cache storage/framework/sessions storage/framework/views \
+    storage/logs bootstrap/cache \
+    && chown -R www-data:www-data storage bootstrap/cache \
+    && chmod -R 755 storage bootstrap/cache
 
-# Finish composer installation
-RUN composer dump-autoload --optimize && \
-    composer run-script post-install-cmd
+# Generate vendor/ and composer.lock inside image
+RUN composer update --no-dev --optimize-autoloader --no-interaction
 
-# Set permissions
-RUN chown -R www-data:www-data /var/www \
-    && chmod -R 755 /var/www
-
-# Expose port 9000
-EXPOSE 9000
-
-# Start Laravel dev server
+# Start Laravel
 CMD ["php", "artisan", "serve", "--host=0.0.0.0", "--port=9000"]
+
+# Expose port for Laravel dev server
+EXPOSE 9000

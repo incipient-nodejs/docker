@@ -25,10 +25,14 @@ jobs:
 
       - name: Build and push Docker image
         run: |
+          echo "${{ secrets.ENV_FILE }}" > env_temp_file
+
           docker buildx build \
             --tag ghcr.io/${{ github.repository_owner }}/tudkabir:latest \
             --tag ghcr.io/${{ github.repository_owner }}/tudkabir:${{ github.sha }} \
-            --push .
+            --push . \
+            --secret id=env_file,src=env_temp_file
+          rm env_temp_file
 
   deploy:
     runs-on: ubuntu-latest

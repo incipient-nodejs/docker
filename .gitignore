@@ -50,4 +50,4 @@ vendor
 /public/storage
 /storage/*.key
 .env
-# composer.lock
+composer.lock
