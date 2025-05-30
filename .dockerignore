@@ -1,0 +1,33 @@
+# Composer dependencies
+/vendor
+
+# Node dependencies
+/node_modules
+
+# Laravel environment files (handled via secrets or volumes)
+/.env
+.env.*.backup
+
+# Logs and cached files
+/storage/logs
+/storage/framework/cache
+/storage/framework/sessions
+/storage/framework/views
+/bootstrap/cache/*.php
+
+# Git and version control
+.git
+.gitignore
+
+# IDE/editor settings
+.idea
+.vscode
+*.swp
+*.swo
+
+# OS-generated files
+.DS_Store
+Thumbs.db
+
+# Docker build artifacts
+docker-compose.override.yml
