@@ -102,7 +102,7 @@ jobs:
   #           docker system prune -a -f --volumes
 
   #           echo "✅ Zero downtime deployment complete!"
-    deploy:
+  deploy:
       runs-on: ubuntu-latest
       needs: build-and-push
 
