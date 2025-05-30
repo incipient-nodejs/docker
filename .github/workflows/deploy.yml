@@ -39,7 +39,7 @@ jobs:
     needs: build-and-push
 
     steps:
-      - name: Deploy via password SSH
+      - name: Deploy via SSH
         uses: appleboy/ssh-action@v1.0.3
         with:
           host: ${{ secrets.SSH_HOST }}
@@ -57,13 +57,17 @@ jobs:
             echo "🔐 Logging in to GHCR..."
             echo "${{ secrets.GHCR_PAT }}" | docker login ghcr.io -u ${{ github.actor }} --password-stdin
 
-            echo "▶ Pulling new image..."
+            echo "▶ Pulling latest image..."
             docker pull ghcr.io/${{ github.repository_owner }}/tudkabir:latest
+
+            echo "🛑 Removing any old temp container..."
+            docker rm -f tubkair_temp || true
 
             echo "▶ Starting new container on port 9001..."
             docker run -d \
               --name tubkair_temp \
               --env-file .env \
+              --restart unless-stopped \
               -p 9001:9000 \
               ghcr.io/${{ github.repository_owner }}/tudkabir:latest
 
@@ -73,23 +77,25 @@ jobs:
                 echo "✅ Health check passed"
                 break
               fi
-              echo "⏳ Waiting for health check..."
+              echo "⏳ Waiting for health check... ($i/10)"
               sleep 2
               if [ "$i" -eq 10 ]; then
-                echo "❌ New container failed health check. Aborting."
-                # docker stop tubkair_temp && docker rm tubkair_temp
+                echo "❌ New container failed health check. Logging container output:"
+                docker logs tubkair_temp || true
+                docker stop tubkair_temp && docker rm tubkair_temp
                 exit 1
               fi
             done
 
-            echo "🛑 Stopping old container..."
-            # docker stop tubkair_app || true
-            # docker rm tubkair_app || true
+            echo "🛑 Stopping old container (if exists)..."
+            docker stop tubkair_app || true
+            docker rm tubkair_app || true
 
-            echo "🚀 Renaming new container..."
-            # docker rename tubkair_temp tubkair_app
+            echo "🚀 Promoting new container..."
+            docker rename tubkair_temp tubkair_app
 
             echo "🧹 Pruning unused images and volumes..."
-            # docker system prune -a -f --volumes
+            docker system prune -a -f --volumes
 
             echo "✅ Zero downtime deployment complete!"
+
