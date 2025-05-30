@@ -1,10 +1,10 @@
-# Start from PHP 8.2 FPM image
+# ---- Base PHP Image ----
 FROM php:8.2-fpm
 
 # Set working directory
 WORKDIR /var/www
 
-# Install system dependencies
+# ---- System Dependencies ----
 RUN apt-get update && apt-get install -y \
     git \
     curl \
@@ -18,22 +18,24 @@ RUN apt-get update && apt-get install -y \
     && docker-php-ext-install pdo pdo_mysql mbstring exif pcntl bcmath gd zip \
     && apt-get clean
 
-# Install Composer
+# ---- Install Composer ----
 COPY --from=composer:2 /usr/bin/composer /usr/bin/composer
 
-# Copy composer files first and install dependencies (to leverage Docker cache)
+# ---- Copy composer files first for caching ----
 COPY composer.json composer.lock ./
-RUN composer install --no-dev --optimize-autoloader
 
-# Copy entire Laravel project
+# ---- Install PHP dependencies ----
+RUN composer install --no-dev --optimize-autoloader --no-interaction --prefer-dist
+
+# ---- Copy full Laravel application ----
 COPY . .
 
-# Set proper permissions
+# ---- Permissions ----
 RUN chown -R www-data:www-data /var/www \
-    && chmod -R 755 /var/www/storage
+    && chmod -R 755 /var/www/storage /var/www/bootstrap/cache
 
-# Expose port 9000
+# ---- Expose port ----
 EXPOSE 9000
 
-# Run Laravel dev server
+# ---- Run Laravel development server ----
 CMD ["php", "artisan", "serve", "--host=0.0.0.0", "--port=9000"]
