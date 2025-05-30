@@ -11,7 +11,7 @@ Route::get('/asyc-product', function (Request $request) {
  });
 
 Route::get("/healthz", function () {
-    return response()->json(['status' => 'ok']);
+    return response()->json(['status' => 'Zindha hai!!']);
 });
 Route::get('/user', function (Request $request) { return $request->user(); })->middleware('auth:sanctum');
 Route::post('/logs', [LogController::class, 'store']);
