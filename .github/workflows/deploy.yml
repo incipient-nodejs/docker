@@ -53,7 +53,7 @@ jobs:
             echo "🔗 Creating shared Docker network (if not exists)..."
             docker network inspect tudkabir-net >/dev/null 2>&1 || docker network create tudkabir-net
 
-            echo "🧠 Ensuring Redis container is running with volume..."
+            echo "🧠 Ensuring Redis container is running..."
             if ! docker ps --format '{{.Names}}' | grep -q '^tudkabir_redis$'; then
               if docker ps -a --format '{{.Names}}' | grep -q '^tudkabir_redis$'; then
                 echo "⏳ Starting existing Redis container..."
@@ -72,158 +72,54 @@ jobs:
               echo "✅ Redis container is already running."
             fi
 
-            echo "▶ Pulling latest app image..."
+            echo "▶ Pulling latest Laravel app image..."
             docker pull ghcr.io/${{ github.repository_owner }}/tudkabir:latest
 
-            echo "📦 Determining active environment (blue/green)..."
-            if docker ps --format '{{.Names}}' | grep -q '^tubkair_blue$'; then
-              ACTIVE="blue"
-            elif docker ps --format '{{.Names}}' | grep -q '^tubkair_green$'; then
-              ACTIVE="green"
-            else
-              echo "⚠️ No active container found, defaulting to blue as active."
-              ACTIVE="green"
-            fi
+            echo "🌱 Setting dynamic port for green container..."
+            GREEN_PORT=9001  # Can be dynamically generated if needed
 
-            if [ "$ACTIVE" = "blue" ]; then
-              NEW_CONTAINER="tubkair_green"
-              OLD_CONTAINER="tubkair_blue"
-            else
-              NEW_CONTAINER="tubkair_blue"
-              OLD_CONTAINER="tubkair_green"
-            fi
-
-            echo "▶ Writing .env file..."
-            echo "${{ secrets.ENV_FILE }}" > .env
-
-            echo "🔀 Running new container ($NEW_CONTAINER) on port 9001 for health check..."
-            docker rm -f $NEW_CONTAINER || true
+            echo "🟢 Starting green container on port $GREEN_PORT..."
+            docker rm -f tubkair_green || true
             docker run -d \
-              --name $NEW_CONTAINER \
+              --name tubkair_green \
               --env-file .env \
               --network tudkabir-net \
+              -p ${GREEN_PORT}:9000 \
               --restart unless-stopped \
-              -p 9001:9000 \
               ghcr.io/${{ github.repository_owner }}/tudkabir:latest
 
-            echo "🧪 Health checking $NEW_CONTAINER on port 9001..."
+            echo "🔍 Health check for green container..."
             for i in {1..30}; do
-              if curl -s http://localhost:9001/api/healthz | grep -q "ok"; then
-                echo "✅ Health check passed"
+              if curl -s http://localhost:$GREEN_PORT/api/healthz | grep -q "ok"; then
+                echo "✅ Green container healthy"
                 break
               fi
               echo "⏳ Waiting for health check... ($i/30)"
               sleep 1
               if [ "$i" -eq 30 ]; then
-                echo "❌ Health check failed. Logs:"
-                docker logs $NEW_CONTAINER || true
-                docker stop $NEW_CONTAINER && docker rm $NEW_CONTAINER
+                echo "❌ Green container failed health check"
+                docker logs tubkair_green || true
+                docker rm -f tubkair_green
                 exit 1
               fi
             done
 
-            echo "🛑 Stopping old container ($OLD_CONTAINER)..."
-            docker stop $OLD_CONTAINER || true
-            docker rm $OLD_CONTAINER || true
+            echo "🔁 Swapping green -> blue (port 9000)..."
+            docker stop tubkair_blue || true
+            docker rm -f tubkair_blue || true
 
-            echo "🚀 Promoting $NEW_CONTAINER to production (port 9000)..."
-            docker rm -f $NEW_CONTAINER || true
+            docker stop tubkair_green
+            docker rename tubkair_green tubkair_blue
+
             docker run -d \
-              --name $NEW_CONTAINER \
+              --name tubkair_blue \
               --env-file .env \
               --network tudkabir-net \
-              --restart unless-stopped \
               -p 9000:9000 \
+              --restart unless-stopped \
               ghcr.io/${{ github.repository_owner }}/tudkabir:latest
 
-            echo "🧹 Pruning old images and volumes..."
+            echo "🧹 Cleaning up..."
             docker system prune -a -f --volumes
 
-            echo "✅ Blue-Green Deployment complete! $NEW_CONTAINER is now live on port 9000."
-
-# deploy:
-#     runs-on: ubuntu-latest
-#     needs: build-and-push
-
-#     steps:
-#       - name: Deploy via SSH
-#         uses: appleboy/ssh-action@v1.0.3
-#         with:
-#           host: ${{ secrets.DO_SSH_HOST }}
-#           username: ${{ secrets.DO_SSH_USER }}
-#           password: ${{ secrets.DO_SSH_PASSWORD }}
-#           script: |
-#             set -e
-
-#             mkdir -p $HOME/htdocs/api.tudkabir.com
-#             cd $HOME/htdocs/api.tudkabir.com
-
-#             echo "🔐 Logging in to GHCR..."
-#             echo "${{ secrets.GHCR_PAT }}" | docker login ghcr.io -u ${{ github.actor }} --password-stdin
-
-#             echo "🔗 Creating shared Docker network (if not exists)..."
-#             docker network inspect tudkabir-net >/dev/null 2>&1 || docker network create tudkabir-net
-
-#             echo "🧠 Ensuring Redis container is running with volume..."
-#             if ! docker ps --format '{{.Names}}' | grep -q '^tudkabir_redis$'; then
-#               if docker ps -a --format '{{.Names}}' | grep -q '^tudkabir_redis$'; then
-#                 echo "⏳ Starting existing Redis container..."
-#                 docker start tudkabir_redis
-#               else
-#                 echo "🚀 Creating new Redis container..."
-#                 docker volume inspect tudkabir_redis_data >/dev/null 2>&1 || docker volume create tudkabir_redis_data
-#                 docker run -d \
-#                   --name tudkabir_redis \
-#                   --network tudkabir-net \
-#                   --restart unless-stopped \
-#                   -v tudkabir_redis_data:/data \
-#                   redis:alpine
-#               fi
-#             else
-#               echo "✅ Redis container is already running."
-#             fi
-
-#             echo "▶ Pulling latest app image..."
-#             docker pull ghcr.io/${{ github.repository_owner }}/tudkabir:latest
-
-#             echo "🛑 Removing any old temp container..."
-#             docker rm -f tubkair_temp || true
-
-#             echo "▶ Starting new Laravel container on port 9001..."
-#             echo "${{ secrets.ENV_FILE }}" > .env
-
-#             docker run -d \
-#               --name tubkair_temp \
-#               --env-file .env \
-#               --network tudkabir-net \
-#               --restart unless-stopped \
-#               -p 9001:9000 \
-#               ghcr.io/${{ github.repository_owner }}/tudkabir:latest
-
-#             echo "▶ Waiting for Laravel container to become healthy..."
-#             for i in {1..30}; do
-#               if curl -s http://localhost:9001/api/healthz | grep -q "ok"; then
-#                 echo "✅ Health check passed"
-#                 break
-#               fi
-#               echo "⏳ Waiting for health check... ($i/30)"
-#               sleep 1
-#               if [ "$i" -eq 30 ]; then
-#                 echo "❌ Health check failed. Logs:"
-#                 docker logs tubkair_temp || true
-#                 docker stop tubkair_temp && docker rm tubkair_temp
-#                 exit 1
-#               fi
-#             done
-
-#             echo "🛑 Stopping old Laravel container (if any)..."
-#             docker stop tubkair_app || true
-#             docker rm tubkair_app || true
-
-#             echo "🚀 Promoting new container..."
-#             docker rename tubkair_temp tubkair_app
-
-#             echo "🧹 Pruning old images and volumes..."
-#             docker system prune -a -f --volumes
-
-#             echo "✅ Deployment completed successfully!"
+            echo "✅ Deployment successful (Blue container running on port 9000)"
