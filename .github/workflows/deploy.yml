@@ -6,29 +6,29 @@ on:
       - main
 
 jobs:
-  build-and-push:
-    runs-on: ubuntu-latest
+  # build-and-push:
+  #   runs-on: ubuntu-latest
 
-    steps:
-      - name: Checkout code
-        uses: actions/checkout@v4
+  #   steps:
+  #     - name: Checkout code
+  #       uses: actions/checkout@v4
 
-      - name: Set up Docker Buildx
-        uses: docker/setup-buildx-action@v3
+  #     - name: Set up Docker Buildx
+  #       uses: docker/setup-buildx-action@v3
 
-      - name: Log in to GitHub Container Registry
-        uses: docker/login-action@v3
-        with:
-          registry: ghcr.io
-          username: ${{ github.actor }}
-          password: ${{ secrets.GHCR_PAT }}
+  #     - name: Log in to GitHub Container Registry
+  #       uses: docker/login-action@v3
+  #       with:
+  #         registry: ghcr.io
+  #         username: ${{ github.actor }}
+  #         password: ${{ secrets.GHCR_PAT }}
 
-      - name: Build and push Docker image
-        run: |
-          docker buildx build \
-            --tag ghcr.io/${{ github.repository_owner }}/tudkabir:latest \
-            --tag ghcr.io/${{ github.repository_owner }}/tudkabir:${{ github.sha }} \
-            --push .
+  #     - name: Build and push Docker image
+  #       run: |
+  #         docker buildx build \
+  #           --tag ghcr.io/${{ github.repository_owner }}/tudkabir:latest \
+  #           --tag ghcr.io/${{ github.repository_owner }}/tudkabir:${{ github.sha }} \
+  #           --push .
 
   deploy:
     runs-on: ubuntu-latest
@@ -73,7 +73,7 @@ jobs:
               sleep 2
               if [ "$i" -eq 10 ]; then
                 echo "❌ New container failed health check. Aborting."
-                docker stop tubkair_temp && docker rm tubkair_temp
+                # docker stop tubkair_temp && docker rm tubkair_temp
                 exit 1
               fi
             done
