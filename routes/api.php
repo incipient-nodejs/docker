@@ -10,6 +10,9 @@ Route::get('/asyc-product', function (Request $request) {
   return "Ok, vou trabalhar";
  });
 
+Route::get("/healthz", function () {
+    return response()->json(['status' => 'ok']);
+});
 Route::get('/user', function (Request $request) { return $request->user(); })->middleware('auth:sanctum');
 Route::post('/logs', [LogController::class, 'store']);
 

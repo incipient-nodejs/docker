@@ -73,7 +73,7 @@ jobs:
 
             echo "▶ Waiting for container to become healthy..."
             for i in {1..10}; do
-              if curl -s http://localhost:9001/healthz | grep -q "ok"; then
+              if curl -s http://localhost:9001/api/healthz | grep -q "ok"; then
                 echo "✅ Health check passed"
                 break
               fi

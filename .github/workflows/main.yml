@@ -1,0 +1,51 @@
+on:
+  push:
+    branches:
+      - main
+name: 🚀 Deploy website on push
+jobs:
+  web-deploy-mdb:
+    name: 🎉 Deploy MDB
+    runs-on: ubuntu-latest
+    steps:
+    - name: 🚚 Get latest code
+      uses: actions/checkout@v4
+
+    - name: 📂 Sync files to MDB
+      uses: SamKirkland/FTP-Deploy-Action@v4.3.5
+      with:
+        server: ${{ secrets.ftp_host_mdb }}
+        username: ${{ secrets.ftp_username_mdb }}
+        password: ${{ secrets.ftp_password_mdb }}
+        server-dir: mdb.bitkabir.com/
+
+  web-deploy-tudokabir:
+    name: 🎉 Deploy TudoKabir
+    runs-on: ubuntu-latest
+    steps:
+    - name: 🚚 Get latest code
+      uses: actions/checkout@v4
+
+    - name: 📂 Sync files to TudoKabir
+      uses: SamKirkland/FTP-Deploy-Action@v4.3.5
+      with:
+        server: ${{ secrets.ftp_host_mdb }}
+        username: ${{ secrets.ftp_username_mdb }}
+        password: ${{ secrets.ftp_password_mdb }}
+        server-dir: tudokabir.bitkabir.com/mdb_web_painel_api/
+
+  web-deploy-tudokabir-vps:
+    name: 🎉 Deploy TudoKabir in VPS
+    runs-on: ubuntu-latest
+    steps:
+    - name: 🚚 Get latest code
+      uses: actions/checkout@v2
+
+    - name: 📂 Sync files to TudoKabir in vps
+      uses: wlixcc/SFTP-Deploy-Action@v1.2.4
+      with:
+        server: ${{ secrets.ftp_host_vps }}
+        username: ${{ secrets.ftp_username_vps }}
+        password: ${{ secrets.ftp_password_vps }}
+        remote_path: '/var/www/'
+        port: 22
