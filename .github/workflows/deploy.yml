@@ -99,7 +99,7 @@ jobs:
               if [ "$i" -eq 30 ]; then
                 echo "❌ Green container failed health check"
                 docker logs tubkair_green || true
-                # docker rm -f tubkair_green
+                docker rm -f tubkair_green
                 exit 1
               fi
             done
