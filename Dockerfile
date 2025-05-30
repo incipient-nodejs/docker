@@ -20,11 +20,19 @@ RUN apt-get update && apt-get install -y \
 # Install Composer
 COPY --from=composer:2 /usr/bin/composer /usr/bin/composer
 
-# Copy only composer files first to install dependencies
-COPY composer.json composer.lock /var/www/
+# Create minimal composer.json if it doesn't exist
+RUN if [ ! -f composer.json ]; then \
+    echo '{}' > composer.json && \
+    composer config name "temp/project" && \
+    composer config description "Temporary project" && \
+    composer config minimum-stability "dev" && \
+    composer config prefer-stable true; \
+    fi
 
-# Install dependencies
-RUN composer install --no-scripts --no-autoloader
+# Install Laravel dependencies
+RUN composer require laravel/framework --no-scripts --no-autoloader && \
+    composer require laravel/sanctum --no-scripts --no-autoloader && \
+    composer require laravel/tinker --no-scripts --no-autoloader
 
 # Copy the rest of the application files
 COPY . /var/www
