@@ -20,8 +20,18 @@ RUN apt-get update && apt-get install -y \
 # Install Composer
 COPY --from=composer:2 /usr/bin/composer /usr/bin/composer
 
-# Copy existing application directory contents
+# Copy only composer files first to install dependencies
+COPY composer.json composer.lock /var/www/
+
+# Install dependencies
+RUN composer install --no-scripts --no-autoloader
+
+# Copy the rest of the application files
 COPY . /var/www
+
+# Finish composer installation
+RUN composer dump-autoload --optimize && \
+    composer run-script post-install-cmd
 
 # Set permissions
 RUN chown -R www-data:www-data /var/www \
