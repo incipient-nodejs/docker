@@ -108,8 +108,7 @@ jobs:
             docker stop tubkair_blue || true
             docker rm -f tubkair_blue || true
 
-            docker stop tubkair_green
-            docker rename tubkair_green tubkair_blue
+            docker stop tubkair_green || true
 
             docker run -d \
               --name tubkair_blue \
