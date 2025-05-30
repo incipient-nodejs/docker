@@ -3,12 +3,12 @@ services:
         build:
             context: .
             dockerfile: Dockerfile
-        image: laravel-app
-        container_name: laravel_app
+        image: tudkair_image
+        container_name: tudkair_container
         restart: unless-stopped
-        working_dir: /var/www
-        volumes:
-            - ./:/var/www
+        # working_dir: /var/www
+        # volumes:
+        #     - ./:/var/www
         env_file:
             - .env
         ports:
@@ -17,8 +17,8 @@ services:
             - redis
 
     redis:
-        image: redis:alpine
-        container_name: redis_server
+        image: redis:alpine        
+        container_name: redis_container
         restart: unless-stopped
         ports:
             - "6379:6379"

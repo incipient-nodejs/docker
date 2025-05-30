@@ -1,0 +1,29 @@
+vendor# Laravel-specific
+.env
+.env.*
+.idea/
+.vscode/
+node_modules/
+vendor/
+storage/logs/
+storage/framework/cache/*
+storage/framework/views/*
+storage/framework/sessions/*
+
+# OS generated files
+.DS_Store
+Thumbs.db
+
+# Git
+.git
+.gitignore
+.gitattributes
+
+# Docker
+docker-compose.yml
+Dockerfile*
+
+# Test coverage & debugging
+.phpunit.result.cache
+coverage/
+debugbar/

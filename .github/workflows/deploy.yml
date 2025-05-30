@@ -23,79 +23,168 @@ jobs:
           username: ${{ github.actor }}
           password: ${{ secrets.GHCR_PAT }}
 
+      # - name: Build and push Docker image
+      #   run: |
+      #     echo "${{ secrets.ENV_FILE }}" > env_temp_file
+
+      #     docker buildx build \
+      #       --tag ghcr.io/${{ github.repository_owner }}/tudkabir:latest \
+      #       --tag ghcr.io/${{ github.repository_owner }}/tudkabir:${{ github.sha }} \
+      #       --push . \
+      #       --secret id=env_file,src=env_temp_file
+      #     rm env_temp_file
+      
       - name: Build and push Docker image
         run: |
-          echo "${{ secrets.ENV_FILE }}" > env_temp_file
-
           docker buildx build \
             --tag ghcr.io/${{ github.repository_owner }}/tudkabir:latest \
             --tag ghcr.io/${{ github.repository_owner }}/tudkabir:${{ github.sha }} \
-            --push . \
-            --secret id=env_file,src=env_temp_file
-          rm env_temp_file
+            --push .
 
-  deploy:
-    runs-on: ubuntu-latest
-    needs: build-and-push
+  # deploy:
+  #   runs-on: ubuntu-latest
+  #   needs: build-and-push
 
-    steps:
+  #   steps:
+  #     - name: Deploy via SSH
+  #       uses: appleboy/ssh-action@v1.0.3
+  #       with:
+  #         host: ${{ secrets.DO_SSH_HOST }}
+  #         username: ${{ secrets.DO_SSH_USER }}
+  #         password: ${{ secrets.DO_SSH_PASSWORD }}
+  #         script: |
+  #           set -e
+
+  #           mkdir -p $HOME/htdocs/api.tudkabir.com
+  #           cd $HOME/htdocs/api.tudkabir.com
+
+  #           echo "🔐 Logging in to GHCR..."
+  #           echo "${{ secrets.GHCR_PAT }}" | docker login ghcr.io -u ${{ github.actor }} --password-stdin
+
+  #           echo "▶ Pulling latest image..."
+  #           docker pull ghcr.io/${{ github.repository_owner }}/tudkabir:latest
+
+  #           echo "🛑 Removing any old temp container..."
+  #           docker rm -f tubkair_temp || true
+
+  #           echo "▶ Starting new container on port 9001..."
+  #           docker run -d \
+  #             --name tubkair_temp \
+  #             --env-file .env \
+  #             --restart unless-stopped \
+  #             -p 9001:9000 \
+  #             ghcr.io/${{ github.repository_owner }}/tudkabir:latest
+
+  #           echo "▶ Waiting for container to become healthy..."
+  #           for i in {1..30}; do
+  #             if curl -s http://localhost:9001/api/healthz | grep -q "ok"; then
+  #               echo "✅ Health check passed"
+  #               break
+  #             fi
+  #             echo "⏳ Waiting for health check... ($i/10)"
+  #             sleep 1
+  #             if [ "$i" -eq 10 ]; then
+  #               echo "❌ New container failed health check. Logging container output:"
+  #               docker logs tubkair_temp || true
+  #               docker stop tubkair_temp && docker rm tubkair_temp
+  #               exit 1
+  #             fi
+  #           done
+
+  #           echo "🛑 Stopping old container (if exists)..."
+  #           docker stop tubkair_app || true
+  #           docker rm tubkair_app || true
+
+  #           echo "🚀 Promoting new container..."
+  #           docker rename tubkair_temp tubkair_app
+
+  #           echo "🧹 Pruning unused images and volumes..."
+  #           docker system prune -a -f --volumes
+
+  #           echo "✅ Zero downtime deployment complete!"
+    deploy:
+      runs-on: ubuntu-latest
+      needs: build-and-push
+
+      steps:
       - name: Deploy via SSH
         uses: appleboy/ssh-action@v1.0.3
         with:
-          host: ${{ secrets.SSH_HOST }}
-          username: ${{ secrets.SSH_USER }}
-          key: ${{ secrets.SSH_PRIVATE_KEY }}
+          host: ${{ secrets.DO_SSH_HOST }}
+          username: ${{ secrets.DO_SSH_USER }}
+          password: ${{ secrets.DO_SSH_PASSWORD }}
           script: |
             set -e
 
-            mkdir -p $HOME/tudkabir
-            cd $HOME/tudkabir
-
-            echo "📝 Writing .env file..."
-            echo "${{ secrets.ENV_FILE }}" > .env
+            mkdir -p $HOME/htdocs/api.tudkabir.com
+            cd $HOME/htdocs/api.tudkabir.com
 
             echo "🔐 Logging in to GHCR..."
             echo "${{ secrets.GHCR_PAT }}" | docker login ghcr.io -u ${{ github.actor }} --password-stdin
 
-            echo "▶ Pulling latest image..."
+            echo "🔗 Creating shared Docker network (if not exists)..."
+            docker network inspect tudkabir-net >/dev/null 2>&1 || docker network create tudkabir-net
+
+            echo "🧠 Ensuring Redis container is running with volume..."
+            if ! docker ps --format '{{.Names}}' | grep -q '^tudkabir_redis$'; then
+              if docker ps -a --format '{{.Names}}' | grep -q '^tudkabir_redis$'; then
+                echo "⏳ Starting existing Redis container..."
+                docker start tudkabir_redis
+              else
+                echo "🚀 Creating new Redis container..."
+                docker volume inspect tudkabir_redis_data >/dev/null 2>&1 || docker volume create tudkabir_redis_data
+                docker run -d \
+                  --name tudkabir_redis \
+                  --network tudkabir-net \
+                  --restart unless-stopped \
+                  -v tudkabir_redis_data:/data \
+                  redis:alpine
+              fi
+            else
+              echo "✅ Redis container is already running."
+            fi
+
+            echo "▶ Pulling latest app image..."
             docker pull ghcr.io/${{ github.repository_owner }}/tudkabir:latest
 
             echo "🛑 Removing any old temp container..."
             docker rm -f tubkair_temp || true
 
-            echo "▶ Starting new container on port 9001..."
+            echo "▶ Starting new Laravel container on port 9001..."
+            echo "${{ secrets.ENV_FILE }}" > .env
+
             docker run -d \
               --name tubkair_temp \
               --env-file .env \
+              --network tudkabir-net \
               --restart unless-stopped \
               -p 9001:9000 \
               ghcr.io/${{ github.repository_owner }}/tudkabir:latest
 
-            echo "▶ Waiting for container to become healthy..."
-            for i in {1..10}; do
+            echo "▶ Waiting for Laravel container to become healthy..."
+            for i in {1..30}; do
               if curl -s http://localhost:9001/api/healthz | grep -q "ok"; then
                 echo "✅ Health check passed"
                 break
               fi
-              echo "⏳ Waiting for health check... ($i/10)"
-              sleep 2
-              if [ "$i" -eq 10 ]; then
-                echo "❌ New container failed health check. Logging container output:"
+              echo "⏳ Waiting for health check... ($i/30)"
+              sleep 1
+              if [ "$i" -eq 30 ]; then
+                echo "❌ Health check failed. Logs:"
                 docker logs tubkair_temp || true
                 docker stop tubkair_temp && docker rm tubkair_temp
                 exit 1
               fi
             done
 
-            echo "🛑 Stopping old container (if exists)..."
+            echo "🛑 Stopping old Laravel container (if any)..."
             docker stop tubkair_app || true
             docker rm tubkair_app || true
 
             echo "🚀 Promoting new container..."
             docker rename tubkair_temp tubkair_app
 
-            echo "🧹 Pruning unused images and volumes..."
+            echo "🧹 Pruning old images and volumes..."
             docker system prune -a -f --volumes
 
-            echo "✅ Zero downtime deployment complete!"
-
+            echo "✅ Deployment completed successfully!"
