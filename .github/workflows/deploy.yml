@@ -79,13 +79,13 @@ jobs:
             done
 
             echo "🛑 Stopping old container..."
-            docker stop tubkair_app || true
-            docker rm tubkair_app || true
+            # docker stop tubkair_app || true
+            # docker rm tubkair_app || true
 
             echo "🚀 Renaming new container..."
-            docker rename tubkair_temp tubkair_app
+            # docker rename tubkair_temp tubkair_app
 
             echo "🧹 Pruning unused images and volumes..."
-            docker system prune -a -f --volumes
+            # docker system prune -a -f --volumes
 
             echo "✅ Zero downtime deployment complete!"
