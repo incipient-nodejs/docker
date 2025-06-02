@@ -104,11 +104,13 @@ jobs:
               fi
             done
 
-            echo "🔁 Swapping green -> blue (port 9000)..."
+            echo "🔁 Switching NGINX to green (port 9001)..."
+            sudo sed -i 's/127.0.0.1:9000/127.0.0.1:9001/g' /etc/nginx/sites-enabled/api.tudkabir.com.conf
+            sudo nginx -s reload
+
+            echo "✅ Replacing blue container on 9000..."
             docker stop tubkair_blue || true
             docker rm -f tubkair_blue || true
-
-            docker stop tubkair_green || true
 
             docker run -d \
               --name tubkair_blue \
@@ -118,7 +120,12 @@ jobs:
               --restart unless-stopped \
               ghcr.io/${{ github.repository_owner }}/tudkabir:latest
 
+            echo "🔁 Switching NGINX back to blue (port 9000)..."
+            sudo sed -i 's/127.0.0.1:9001/127.0.0.1:9000/g' /etc/nginx/sites-enabled/api.tudkabir.com.conf
+            sudo nginx -s reload
+
             echo "🧹 Cleaning up..."
+            docker stop tubkair_green || true
             docker system prune -a -f --volumes
 
             echo "✅ Deployment successful (Blue container running on port 9000)"
