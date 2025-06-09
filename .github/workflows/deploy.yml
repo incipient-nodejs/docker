@@ -22,7 +22,7 @@ jobs:
           registry: ghcr.io
           username: ${{ github.actor }}
           password: ${{ secrets.GHCR_PAT }}
-      
+
       - name: Build and push Docker image
         run: |
           docker buildx build \
@@ -129,3 +129,28 @@ jobs:
             docker system prune -a -f --volumes
 
             echo "✅ Deployment successful (Blue container running on port 9000)"
+
+      - name: Send logs to Mattermost
+        if: always()
+        env:
+          GH_TOKEN: ${{ secrets.GHCR_PAT }}
+          REPO: ${{ github.repository }}
+          RUN_ID: ${{ github.run_id }}
+          WEBHOOK: ${{ secrets.MATTERMOST_WEBHOOK_URL }}
+        run: |
+          JOBS_JSON=$(curl -s -H "Authorization: token $GH_TOKEN" \
+            https://api.github.com/repos/$REPO/actions/runs/$RUN_ID/jobs)
+
+          BUILD_ID=$(echo "$JOBS_JSON" | jq '.jobs[] | select(.name=="build-and-push") | .id')
+          DEPLOY_ID=$(echo "$JOBS_JSON" | jq '.jobs[] | select(.name=="deploy") | .id')
+
+          BUILD_URL="https://github.com/$REPO/actions/runs/$RUN_ID/job/$BUILD_ID"
+          DEPLOY_URL="https://github.com/$REPO/actions/runs/$RUN_ID/job/$DEPLOY_ID"
+
+          TEXT="#### 🚀 *TudKabir Deployment Result*  \n\
+          • 🔨 *Build & Push Logs:* [$BUILD_ID]($BUILD_URL)  \n\
+          • 🚀 *Deploy Logs:* [$DEPLOY_ID]($DEPLOY_URL)"
+
+          curl -X POST -H 'Content-Type: application/json' \
+            --data "{\"text\": \"$TEXT\"}" \
+            $WEBHOOK
