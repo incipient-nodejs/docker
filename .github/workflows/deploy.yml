@@ -174,7 +174,7 @@ jobs:
           WEBHOOK: ${{ secrets.MATTERMOST_WEBHOOK_URL }}
           run: |
             JOBS_JSON=$(curl -s -H "Authorization: token $GH_TOKEN" \
-              https://api.github.com/repos/$REPO/actions/runs/$RUN_ID/jobs)
+            "https://api.github.com/repos/$REPO/actions/runs/$RUN_ID/jobs")
 
             BUILD_ID=$(echo "$JOBS_JSON" | jq '.jobs[] | select(.name=="build-and-push") | .id')
             DEPLOY_ID=$(echo "$JOBS_JSON" | jq '.jobs[] | select(.name=="deploy") | .id')
@@ -182,10 +182,14 @@ jobs:
             BUILD_URL="https://github.com/$REPO/actions/runs/$RUN_ID/job/$BUILD_ID"
             DEPLOY_URL="https://github.com/$REPO/actions/runs/$RUN_ID/job/$DEPLOY_ID"
 
-            TEXT="#### 🚀 *TudKabir Deployment Result*  \n\
-            • 🔨 *Build & Push Logs:* [$BUILD_ID]($BUILD_URL)  \n\
+            TEXT="#### 🚀 *TudKabir Deployment Result*  
+            • 🔨 *Build & Push Logs:* [$BUILD_ID]($BUILD_URL)  
             • 🚀 *Deploy Logs:* [$DEPLOY_ID]($DEPLOY_URL)"
 
-            curl -X POST -H 'Content-Type: application/json' \
-              --data "{\"text\": \"$TEXT\"}" \
-              $WEBHOOK
+            # Proper JSON escaping using jq
+            echo "$TEXT" | jq -Rs '{text: .}' > payload.json
+
+            # Send safely
+            curl -s -X POST -H "Content-Type: application/json" \
+              -d @payload.json \
+              "$WEBHOOK"
