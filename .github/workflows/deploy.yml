@@ -130,27 +130,62 @@ jobs:
 
             echo "✅ Deployment successful (Blue container running on port 9000)"
 
-      - name: Send logs to Mattermost
+  notify:
+    runs-on: ubuntu-latest
+    needs: [build-and-push, deploy]
+    if: always()
+    steps:
+      - name: Get failed job log
+        env:
+          GH_TOKEN: ${{ secrets.GH_API_TOKEN }}
+        run: |
+          REPO="${{ github.repository }}"
+          RUN_ID="${{ github.run_id }}"
+          API="https://api.github.com/repos/$REPO/actions/runs/$RUN_ID/jobs"
+
+          # Fetch job metadata
+          JOBS=$(curl -s -H "Authorization: token $GH_TOKEN" "$API")
+          FAILED=$(echo "$JOBS" | jq '.jobs[] | select(.conclusion != "success") | {name, id}' | jq -s .)
+
+          if [[ "$FAILED" == "[]" ]]; then
+            echo "✅ CI/CD completed successfully" | jq -Rs '{text: .}' > payload.json
+          else
+            JOB_ID=$(echo "$FAILED" | jq -r '.[0].id')
+            JOB_NAME=$(echo "$FAILED" | jq -r '.[0].name')
+
+            LOG_URL="https://api.github.com/repos/$REPO/actions/jobs/$JOB_ID/logs"
+            curl -s -L -H "Authorization: token $GH_TOKEN" "$LOG_URL" -o job.log
+
+            MSG="❌ *$JOB_NAME failed*\n\`\`\`\n$(tail -n 50 job.log)\n\`\`\`"
+            echo "$MSG" | jq -Rs '{text: .}' > payload.json
+          fi
+
+      - name: Send to Mattermost
+        run: |
+          curl -s -X POST -H "Content-Type: application/json" \
+            -d @payload.json \
+            "${{ secrets.MATTERMOST_WEBHOOK_URL }}"
+
         if: always()
         env:
           GH_TOKEN: ${{ secrets.GHCR_PAT }}
           REPO: ${{ github.repository }}
           RUN_ID: ${{ github.run_id }}
           WEBHOOK: ${{ secrets.MATTERMOST_WEBHOOK_URL }}
-        run: |
-          JOBS_JSON=$(curl -s -H "Authorization: token $GH_TOKEN" \
-            https://api.github.com/repos/$REPO/actions/runs/$RUN_ID/jobs)
+          run: |
+            JOBS_JSON=$(curl -s -H "Authorization: token $GH_TOKEN" \
+              https://api.github.com/repos/$REPO/actions/runs/$RUN_ID/jobs)
 
-          BUILD_ID=$(echo "$JOBS_JSON" | jq '.jobs[] | select(.name=="build-and-push") | .id')
-          DEPLOY_ID=$(echo "$JOBS_JSON" | jq '.jobs[] | select(.name=="deploy") | .id')
+            BUILD_ID=$(echo "$JOBS_JSON" | jq '.jobs[] | select(.name=="build-and-push") | .id')
+            DEPLOY_ID=$(echo "$JOBS_JSON" | jq '.jobs[] | select(.name=="deploy") | .id')
 
-          BUILD_URL="https://github.com/$REPO/actions/runs/$RUN_ID/job/$BUILD_ID"
-          DEPLOY_URL="https://github.com/$REPO/actions/runs/$RUN_ID/job/$DEPLOY_ID"
+            BUILD_URL="https://github.com/$REPO/actions/runs/$RUN_ID/job/$BUILD_ID"
+            DEPLOY_URL="https://github.com/$REPO/actions/runs/$RUN_ID/job/$DEPLOY_ID"
 
-          TEXT="#### 🚀 *TudKabir Deployment Result*  \n\
-          • 🔨 *Build & Push Logs:* [$BUILD_ID]($BUILD_URL)  \n\
-          • 🚀 *Deploy Logs:* [$DEPLOY_ID]($DEPLOY_URL)"
+            TEXT="#### 🚀 *TudKabir Deployment Result*  \n\
+            • 🔨 *Build & Push Logs:* [$BUILD_ID]($BUILD_URL)  \n\
+            • 🚀 *Deploy Logs:* [$DEPLOY_ID]($DEPLOY_URL)"
 
-          curl -X POST -H 'Content-Type: application/json' \
-            --data "{\"text\": \"$TEXT\"}" \
-            $WEBHOOK
+            curl -X POST -H 'Content-Type: application/json' \
+              --data "{\"text\": \"$TEXT\"}" \
+              $WEBHOOK
