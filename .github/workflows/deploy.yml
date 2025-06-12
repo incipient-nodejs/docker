@@ -33,7 +33,7 @@ jobs:
   deploy:
     runs-on: ubuntu-latest
     needs: build-and-push
-    
+
     steps:
       - name: Checkout specific branch
         uses: actions/checkout@v4
@@ -51,6 +51,5 @@ jobs:
 
       - name: Deploy Docker Stack
         run: |
-          echo "🚀 Deploying Docker Stack..."
-          ssh -i "${{ secrets.DO_SSH_KEY }}" "${{ secrets.DO_SSH_USER }}"@${{ secrets.DO_SSH_HOST }} "docker stack deploy -c /home/runcloud/tudkabir/docker-compose.prod.yml tudkair_stack"
+          docker stack deploy -c /home/runcloud/tudkabir/docker-compose.prod.yml tudkair_stack"
         

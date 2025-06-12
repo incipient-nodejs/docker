@@ -1,5 +1,5 @@
 services:
-    tudkair:
+    tudkabir:
         build:
             context: .
             dockerfile: Dockerfile
@@ -25,3 +25,6 @@ services:
 
 volumes:
     dbdata:
+
+
+# ghcr.io/incipient-nodejs/tudkabir:latest
