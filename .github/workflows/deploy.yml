@@ -44,9 +44,9 @@ jobs:
       - name: Copy files via SSH
         uses: appleboy/scp-action@v0.1.7
         with:
-          host: ${{ secrets.SSH_HOST }}
+          host: ${{ secrets.DO_SSH_HOST }}
           username: ${{ secrets.DO_SSH_USER }}
-          key: ${{ secrets.SSH_PASSWORD }}
+          key: ${{ secrets.DO_SSH_PASSWORD }}
           source: "./*"  
           target: "$HOME/tudkabir"  
 
