@@ -30,6 +30,9 @@ COPY . /var/www
 RUN chown -R www-data:www-data /var/www \
     && chmod -R 755 /var/www
 
+# Run composer install to install Laravel dependencies
+RUN composer install --no-dev --optimize-autoloader
+
 # Run migrations during startup
 COPY docker.db.migration.sh /usr/local/bin/docker.db.migration.sh
 RUN chmod +x /usr/local/bin/docker.db.migration.sh
