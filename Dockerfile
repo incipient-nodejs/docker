@@ -1,9 +1,12 @@
+# Set base image
 FROM php:8.2-fpm
 
-# Install PHP extensions
+# Set working directory
+WORKDIR /var/www
+
+# Install system dependencies
 RUN apt-get update && apt-get install -y \
     curl \
-    git \
     unzip \
     zip \
     libzip-dev \
@@ -20,23 +23,20 @@ RUN apt-get update && apt-get install -y \
 # Install Composer
 COPY --from=composer:2 /usr/bin/composer /usr/bin/composer
 
-# Set working directory
-WORKDIR /var/www
+# Copy existing application directory contents
+COPY . /var/www
 
-# Copy Laravel app (no vendor or lock file)
-COPY . .
+# Set permissions
+RUN chown -R www-data:www-data /var/www \
+    && chmod -R 755 /var/www
 
-# Make Laravel folders writable
-RUN mkdir -p storage/framework/cache storage/framework/sessions storage/framework/views \
-    storage/logs bootstrap/cache \
-    && chmod -R 755 storage bootstrap/cache
+# Run migrations during startup
+COPY docker.db.migration.sh /usr/local/bin/docker.db.migration.sh
+RUN chmod +x /usr/local/bin/docker.db.migration.sh
 
-# Run composer update and confirm vendor is created
-RUN composer install --no-dev --optimize-autoloader --no-interaction \
-    && test -f vendor/autoload.php || (echo "❌ composer failed!" && exit 1)
-    
-# Expose port for artisan
+# Expose port 9000
 EXPOSE 9000
 
-# Start Laravel app
-CMD ["php", "artisan", "serve", "--host=0.0.0.0", "--port=9000"]
+# Start Laravel dev server
+# CMD ["php", "artisan", "serve", "--host=0.0.0.0", "--port=9000"]
+CMD ["sh", "-c", "/usr/local/bin/docker.db.migration.sh && php artisan serve --host=0.0.0.0 --port=9000"]

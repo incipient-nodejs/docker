@@ -1,14 +1,14 @@
 services:
-    tubkair:
+    tudkair:
         build:
             context: .
             dockerfile: Dockerfile
-        image: tudkair_image
-        container_name: tudkair_container
+        image: tudkabir_image
+        container_name: tudkabir_container
         restart: unless-stopped
-        # working_dir: /var/www
-        # volumes:
-        #     - ./:/var/www
+        working_dir: /var/www
+        volumes:
+            - ./:/var/www
         env_file:
             - .env
         ports:
@@ -17,7 +17,7 @@ services:
             - redis
 
     redis:
-        image: redis:alpine        
+        image: redis:alpine
         container_name: redis_container
         restart: unless-stopped
         ports:

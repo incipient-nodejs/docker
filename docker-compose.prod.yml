@@ -1,0 +1,56 @@
+services:
+  tudkair:
+    image: ghcr.io/incipient-nodejs/tudkabir:latest
+    restart: unless-stopped
+    working_dir: /var/www
+    volumes:
+      - ./:/var/www
+    env_file:
+      - .env
+    ports:
+      - target: 9000
+        published: 9000
+        protocol: tcp
+        mode: ingress
+    depends_on:
+      - redis
+    networks:
+      - tudkair_network
+    deploy:
+      replicas: 2
+      restart_policy:
+        condition: on-failure
+      update_config:
+        parallelism: 1
+        delay: 10s
+        order: start-first
+      placement:
+        constraints:
+          - node.role == manager
+
+    # healthcheck:
+    #   test: [ "CMD", "curl", "-f", "http://localhost:9000/healthz" ]
+    #   interval: 10s
+    #   timeout: 3s
+    #   retries: 3
+
+  redis:
+    image: redis:alpine
+    restart: unless-stopped
+    ports:
+      - "6379:6379"
+    networks:
+      - tudkair_network
+    healthcheck:
+      test: [ "CMD", "redis-cli", "ping" ]
+      interval: 10s
+      timeout: 3s
+      retries: 3
+
+volumes:
+  dbdata:
+
+
+networks:
+  tudkair_network:
+    driver: overlay

@@ -6,49 +6,49 @@ on:
       - main
 
 jobs:
-  # build-and-push:
-  #   runs-on: ubuntu-latest
+  build-and-push:
+    runs-on: ubuntu-latest
 
-  #   steps:
-  #     - name: Checkout code
-  #       uses: actions/checkout@v4
+    steps:
+      - name: Checkout code
+        uses: actions/checkout@v4
 
-  #     - name: Set up Docker Buildx
-  #       uses: docker/setup-buildx-action@v3
+      - name: Set up Docker Buildx
+        uses: docker/setup-buildx-action@v3
 
-  #     - name: Log in to GitHub Container Registry
-  #       uses: docker/login-action@v3
-  #       with:
-  #         registry: ghcr.io
-  #         username: ${{ github.actor }}
-  #         password: ${{ secrets.GHCR_PAT }}
+      - name: Log in to GitHub Container Registry
+        uses: docker/login-action@v3
+        with:
+          registry: ghcr.io
+          username: ${{ github.actor }}
+          password: ${{ secrets.GHCR_PAT }}
 
-  #     - name: Build and push Docker image
-  #       run: |
-  #         docker buildx build \
-  #           --tag ghcr.io/${{ github.repository_owner }}/tudkabir:latest \
-  #           --tag ghcr.io/${{ github.repository_owner }}/tudkabir:${{ github.sha }} \
-  #           --push .
-
+      - name: Build and push Docker image
+        run: |
+          docker buildx build \
+            --tag ghcr.io/${{ github.repository_owner }}/tudkabir:latest \
+            --tag ghcr.io/${{ github.repository_owner }}/tudkabir:${{ github.sha }} \
+            --push .
 
   deploy:
     runs-on: ubuntu-latest
     steps:
-      # Step 1: Checkout code from a specific branch
       - name: Checkout specific branch
         uses: actions/checkout@v4
         with:
-          ref: 'main'
+          ref: "main"
 
-      # Step 2: Copy files to the remote server via SCP
       - name: Copy files via SSH
         uses: appleboy/scp-action@v0.1.7
         with:
           host: ${{ secrets.DO_SSH_HOST }}
           username: ${{ secrets.DO_SSH_USER }}
           key: ${{ secrets.DO_SSH_PASSWORD }}
-          source: "./*"  
-          target: "$HOME/tudkabir"  
+          source: "./*"
+          target: "$HOME/tudkabir"
 
-
+      - name: Deploy Docker Stack
+        run: |
+          echo "🚀 Deploying Docker Stack..."
+          ssh -i "${{ secrets.DO_SSH_KEY }}" "${{ secrets.DO_SSH_USER }}"@${{ secrets.DO_SSH_HOST }} "docker stack deploy -c /home/runcloud/tudkabir/docker-compose.prod.yml tudkair_stack"
         
